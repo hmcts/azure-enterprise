@@ -7,7 +7,6 @@ Simplified for our use-cases / retrofitting.
 graph TD
 classDef mg stroke:#ff1100,stroke-width:4px
 Root:::mg --> HMCTS
-HMCTS:::mg --> VH:::mg
 HMCTS:::mg --> Security:::mg
 HMCTS:::mg --> Crime:::mg
 HMCTS:::mg --> CFT:::mg
@@ -40,7 +39,6 @@ SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO --- DTS-SHAREDSERVICES-DEV --- DTS-
 SDS-Prod:::mg --> DTS-SHAREDSERVICES-STG --- DTS-SHAREDSERVICES-PROD --- DCD-AWS-Migration --- DCD-CFT-VH-Pilot --- DTS-SHAREDSERVICESPTL --- DTS-SHAREDSERVICESPTL-SBOX --- DTS-ARCHIVING-PROD 
 SDS-Sandbox:::mg --> DTS-SHAREDSERVICES-SBOX 
 Security:::mg --> HMCTS-SOC-SBOX --- HMCTS-SOC-PROD 
-VH:::mg --> DTS-VH-PROD 
 ```
 
 ## Diagram setup
