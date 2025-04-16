@@ -117,3 +117,23 @@ module "enterprise" {
     }
   }
 }
+
+import {
+  id = "/providers/Microsoft.Subscription/aliases/DTS-RBAC-SANDBOX"
+  to = module.subscription["DTS-RBAC-SANDBOX"].azurerm_subscription.this
+}
+
+import {
+  id = "/providers/Microsoft.Subscription/aliases/DCD-RBAC-CONTROL"
+  to = module.subscription["DCD-RBAC-CONTROL"].azurerm_subscription.this
+}
+
+import {
+  id = "/providers/Microsoft.Subscription/aliases/DTS-RBAC-PROD"
+  to = module.subscription["DTS-RBAC-PROD"].azurerm_subscription.this
+}
+
+import {
+  id = "/providers/Microsoft.Subscription/aliases/DTS-RBAC-PRODUCTION"
+  to = module.subscription["DTS-RBAC-PRODUCTION"].azurerm_subscription.this
+}
