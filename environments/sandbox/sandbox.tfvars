@@ -1,5 +1,7 @@
 cft_sandbox_subscriptions = {
-  DTS-RBAC-SANDBOX = {}
+  DTS-RBAC-SANDBOX = {
+    environment = "sbox"
+  }
 }
 
 cft_production_subscriptions = {
