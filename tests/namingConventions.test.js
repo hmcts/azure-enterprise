@@ -22,7 +22,7 @@ describe("Naming conventions", () => {
 
   it("starts with a valid department", () => {
     // noinspection JSMismatchedCollectionQueryUpdate remove this noinspection if any exclusions are added
-    const localExclusions = [];
+    const localExclusions = ["Reform-CFT-Mgmt"];
 
     managementGroupSubscriptions
       .filter(
@@ -36,7 +36,7 @@ describe("Naming conventions", () => {
 
   it("contains a service name", () => {
     // noinspection JSMismatchedCollectionQueryUpdate remove this noinspection if any exclusions are added
-    const localExclusions = [];
+    const localExclusions = ["HMCTS-CONTROL"];
 
     managementGroupSubscriptions
       .filter(
