@@ -1,6 +1,6 @@
 moved {
   from = module.subscription["DTS-VH-PROD"].azurerm_subscription.this
-  to = module.subscription.azurerm_subscription.this_dts_vh_prod
+  to   = module.subscription.azurerm_subscription.this_dts_vh_prod
 }
 
 removed {
