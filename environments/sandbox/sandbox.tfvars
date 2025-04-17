@@ -23,9 +23,9 @@ cft_non_production_subscriptions = {
     deploy_acme                    = true
     acme_storage_account_repl_type = "LRS"
   }
-  # DTS-RBAC-NONPRODUCTION = {
-  #   environment = "dev"
-  # }
+  DTS-RBAC-NONPRODUCTION = {
+    environment = "dev"
+  }
 }
 
 enrollment_account_name = "322108"
