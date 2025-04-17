@@ -244,9 +244,7 @@ platform_production_subscriptions = {
   }
 }
 
-vh_subscriptions = {
-  DTS-VH-PROD = {}
-}
+vh_subscriptions = {}
 
 enrollment_account_name = "233705"
 
