@@ -62,6 +62,7 @@ resource "azuread_application" "app" {
 
 resource "azuread_application_password" "token" {
   application_id = azuread_application.app.id
+  display_name = "ADO Service Connection created by Terraform"
   rotate_when_changed = {
     rotation = time_rotating.rotation_period.id
   }
