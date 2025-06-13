@@ -488,3 +488,12 @@ We can use something called *Azure Lighthouse* to manage multiple tenants and ha
 │ The plugin.(*GRPCProvider).UpgradeResourceState request was cancelled.
 
 ```
+
+The PAT being used is created under a service account. Details of the account can be found [here](https://hmcts.github.io/ops-runbooks/azure-pipelines/github-sso.html#which-account-are-pats-created-under).
+
+The PAT must have the following permissions:
+
+- Security (manage)
+- Service Connections (read, query & manage)
+
+The service account must also have administrator access over the project in Azure DevOps.
