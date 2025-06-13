@@ -491,6 +491,8 @@ We can use something called *Azure Lighthouse* to manage multiple tenants and ha
 
 The PAT being used is created under a service account. Details of the account can be found [here](https://hmcts.github.io/ops-runbooks/azure-pipelines/github-sso.html#which-account-are-pats-created-under).
 
+Details on how to create a PAT can be found in the [Microsoft Docs](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows).
+
 The PAT must have the following permissions:
 
 - Security (manage)
