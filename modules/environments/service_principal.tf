@@ -1,5 +1,9 @@
 resource "time_rotating" "one_year" {
-  rotation_days = 330
+  rotation_days = 365
+  # Force rotation by adding a trigger - remove this after rotation completes
+  triggers = {
+    force_rotation = "2025-09-12" # Change this date to force rotation
+  }
 }
 
 resource "random_uuid" "app_uuid" {}
