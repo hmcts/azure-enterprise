@@ -7,6 +7,7 @@ locals {
       display_name               = value.display_name
       parent_management_group_id = value.parent_management_group_id
       subscription_ids           = value.subscription_ids
+      environment_level          = value.environment_level
     }
   }
 
