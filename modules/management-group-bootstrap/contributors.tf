@@ -36,7 +36,7 @@ resource "azurerm_role_assignment" "contributors_minus_delete" {
 
 # Data source to lookup the existing PIM approvers group
 data "azuread_group" "pim_approvers" {
-  display_name     = "DTS Azure PIM Approvers (CNP)"
+  display_name = "DTS Azure PIM Approvers (CNP)"
 }
 
 # Assign Contributor role to PIM Approvers group at Prod level for emergency access
