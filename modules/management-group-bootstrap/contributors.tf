@@ -19,7 +19,7 @@ resource "azurerm_role_assignment" "contributors" {
 
 # Data source to lookup the existing custom role
 data "azurerm_role_definition" "contributor_minus_delete" {
-  name  = "Azure Contributor Role minus deletes"
+  name  = "1b0ab888-75d4-8745-1775-d28ca6f274bd" #"Azure Contributor Role minus deletes"
   scope = "/providers/Microsoft.Management/managementGroups/HMCTS"
 }
 
@@ -37,7 +37,6 @@ resource "azurerm_role_assignment" "contributors_minus_delete" {
 # Data source to lookup the existing PIM approvers group
 data "azuread_group" "pim_approvers" {
   display_name     = "DTS Azure PIM Approvers (CNP)"
-  security_enabled = true
 }
 
 # Assign Contributor role to PIM Approvers group at Prod level for emergency access
