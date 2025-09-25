@@ -23,7 +23,7 @@ data "azurerm_role_definition" "contributor_minus_delete" {
   scope = "/providers/Microsoft.Management/managementGroups/HMCTS"
 }
 
-resource "azurerm_role_assignment" "contributors-minus-delete" {
+resource "azurerm_role_assignment" "contributors_minus_delete" {
   for_each = {
     for k, v in var.groups : k => v
     if v.environment_level == "prod"
