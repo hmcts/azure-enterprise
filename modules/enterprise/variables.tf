@@ -8,7 +8,7 @@ variable "create_custom_roles" {
 
 variable "management_groups" {
   type = map(
-    object({ display_name = string, parent_management_group_id = string, subscription_ids = list(string), environment_level = string })
+    object({ display_name = string, parent_management_group_id = string, subscription_ids = list(string), environment_level = optional(string) })
   )
 
   validation {
@@ -19,4 +19,5 @@ variable "management_groups" {
 
 variable "production_contributor_role" {
   type = string
+  default = "Contributor"
 }

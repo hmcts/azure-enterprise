@@ -9,7 +9,7 @@ resource "azuread_group" "contributors" {
 resource "azurerm_role_assignment" "contributors" {
   for_each = {
     for k, v in var.groups : k => v
-    if v.environment_level == "nonprod"
+    if v.environment_level != "prod"
   }
 
   principal_id         = azuread_group.contributors[each.value.id].object_id
