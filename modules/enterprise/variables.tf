@@ -17,3 +17,6 @@ variable "management_groups" {
   }
 }
 
+variable "production_contributor_role" {
+  type = string
+}

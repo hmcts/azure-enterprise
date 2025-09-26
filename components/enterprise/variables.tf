@@ -69,6 +69,10 @@ variable "platform_production_subscriptions" {
   default = {}
 }
 
+variable "production_contributor_role" {
+  type = string
+}
+
 variable "billing_account_name" {
   default = "59232335"
 }

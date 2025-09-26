@@ -249,3 +249,5 @@ vh_subscriptions = {}
 enrollment_account_name = "233705"
 
 add_service_connection_to_ado = true
+
+production_contributor_role = "Azure Contributor Role minus deletes"

@@ -17,23 +17,6 @@ resource "azurerm_role_assignment" "contributors" {
   role_definition_name = "Contributor"
 }
 
-# Data source to lookup the existing custom role
-data "azurerm_role_definition" "contributor_minus_delete" {
-  name  = "1b0ab888-75d4-8745-1775-d28ca6f274bd" #"Azure Contributor Role minus deletes"
-  scope = "/providers/Microsoft.Management/managementGroups/HMCTS"
-}
-
-resource "azurerm_role_assignment" "contributors_minus_delete" {
-  for_each = {
-    for k, v in var.groups : k => v
-    if v.environment_level == "prod"
-  }
-
-  principal_id       = azuread_group.contributors[each.value.id].object_id
-  scope              = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
-  role_definition_id = data.azurerm_role_definition.contributor_minus_delete.id
-}
-
 # Data source to lookup the existing PIM approvers group
 data "azuread_group" "pim_approvers" {
   display_name = "DTS Azure PIM Approvers (CNP)"
@@ -49,5 +32,17 @@ resource "azurerm_role_assignment" "pim_approvers_contributor" {
   principal_id         = data.azuread_group.pim_approvers.object_id
   scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
   role_definition_name = "Contributor"
+}
+
+# Assign Contributor role to Production groups and subscriptions
+resource "azurerm_role_assignment" "production_contributor" {
+  for_each = {
+    for k, v in var.groups : k => v
+    if v.environment_level == "prod"
+  }
+
+  principal_id         = azuread_group.contributors[each.value.id].object_id
+  scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
+  role_definition_name = var.production_contributor_role
 }
 
