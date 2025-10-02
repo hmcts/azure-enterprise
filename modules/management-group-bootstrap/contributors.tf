@@ -9,7 +9,7 @@ resource "azuread_group" "contributors" {
 resource "azurerm_role_assignment" "contributors" {
   for_each = {
     for k, v in var.groups : k => v
-    if v.environment_level == "Contributor"
+    if v.contributor_role == "Contributor"
   }
 
   principal_id         = azuread_group.contributors[each.value.id].object_id
@@ -26,7 +26,7 @@ data "azuread_group" "pim_approvers" {
 resource "azurerm_role_assignment" "pim_approvers_contributor" {
   for_each = {
     for k, v in var.groups : k => v
-    if v.environment_level != "Contributor"
+    if v.contributor_role != "Contributor"
   }
 
   principal_id         = data.azuread_group.pim_approvers.object_id
@@ -38,7 +38,7 @@ resource "azurerm_role_assignment" "pim_approvers_contributor" {
 resource "azurerm_role_assignment" "production_contributor" {
   for_each = {
     for k, v in var.groups : k => v
-    if v.environment_level != "Contributor"
+    if v.contributor_role != "Contributor"
   }
 
   principal_id         = azuread_group.contributors[each.value.id].object_id
