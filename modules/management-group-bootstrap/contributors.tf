@@ -9,12 +9,11 @@ resource "azuread_group" "contributors" {
 resource "azurerm_role_assignment" "contributors" {
   for_each = {
     for k, v in var.groups : k => v
-    if v.contributor_role == "Contributor"
   }
 
   principal_id         = azuread_group.contributors[each.value.id].object_id
   scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
-  role_definition_name = "Contributor"
+  role_definition_name = each.value.contributor_role
 }
 
 # Data source to lookup the existing PIM approvers group
@@ -32,17 +31,5 @@ resource "azurerm_role_assignment" "pim_approvers_contributor" {
   principal_id         = data.azuread_group.pim_approvers.object_id
   scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
   role_definition_name = "Contributor"
-}
-
-# Assign PIM Contributor minus delete role to Production groups and subscriptions
-resource "azurerm_role_assignment" "production_contributor" {
-  for_each = {
-    for k, v in var.groups : k => v
-    if v.contributor_role != "Contributor"
-  }
-
-  principal_id         = azuread_group.contributors[each.value.id].object_id
-  scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
-  role_definition_name = each.value.contributor_role
 }
 
