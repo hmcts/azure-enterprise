@@ -109,3 +109,8 @@ variable "create_custom_roles" {
   default     = false
   description = "Should this component create any custom roles defined in the enterprise module"
 }
+
+variable "contributor_role" {
+  type    = string
+  default = "Contributor"
+}

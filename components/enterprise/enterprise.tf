@@ -12,7 +12,7 @@ module "enterprise" {
       display_name               = "HMCTS"
       parent_management_group_id = data.azurerm_client_config.core.tenant_id
       subscription_ids           = []
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
 
     # CFT
@@ -20,7 +20,7 @@ module "enterprise" {
       display_name               = "CFT"
       parent_management_group_id = "HMCTS"
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "cft"]
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
     CFT-Sandbox = {
       display_name               = "CFT - Sandbox"
@@ -38,7 +38,7 @@ module "enterprise" {
       display_name               = "CFT - Production"
       parent_management_group_id = "CFT"
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "cft_production"]
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
 
     # SDS
@@ -46,7 +46,7 @@ module "enterprise" {
       display_name               = "SDS"
       parent_management_group_id = "HMCTS"
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sds"]
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
     SDS-Sandbox = {
       display_name               = "SDS - Sandbox"
@@ -64,7 +64,7 @@ module "enterprise" {
       display_name               = "SDS - Production"
       parent_management_group_id = "SDS"
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sds_production"]
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
 
     # Crime
@@ -72,7 +72,7 @@ module "enterprise" {
       display_name               = "Crime"
       parent_management_group_id = "HMCTS"
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "crime"]
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
 
     # Heritage
@@ -80,7 +80,7 @@ module "enterprise" {
       display_name               = "Heritage"
       parent_management_group_id = "HMCTS"
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "heritage"]
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
     Heritage-Sandbox = {
       display_name               = "Heritage - Sandbox"
@@ -98,7 +98,7 @@ module "enterprise" {
       display_name               = "Heritage - Production"
       parent_management_group_id = "Heritage"
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "heritage_production"]
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
 
     # Security
@@ -114,7 +114,7 @@ module "enterprise" {
       display_name               = "Platform"
       parent_management_group_id = "HMCTS"
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "platform"]
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
     Platform-Sandbox = {
       display_name               = "Platform - Sandbox"
@@ -132,7 +132,7 @@ module "enterprise" {
       display_name               = "Platform - Production"
       parent_management_group_id = "Platform"
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "platform_production"]
-      contributor_role           = "Azure Contributor Role minus deletes"
+      contributor_role           = var.contributor_role
     }
   }
 }
