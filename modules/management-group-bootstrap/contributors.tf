@@ -9,7 +9,7 @@ resource "azuread_group" "contributors" {
 resource "azurerm_role_assignment" "contributors" {
   for_each = {
     for k, v in var.groups : k => v
-    if v.environment_level != "prod"
+    if v.environment_level == "Contributor"
   }
 
   principal_id         = azuread_group.contributors[each.value.id].object_id
@@ -26,7 +26,7 @@ data "azuread_group" "pim_approvers" {
 resource "azurerm_role_assignment" "pim_approvers_contributor" {
   for_each = {
     for k, v in var.groups : k => v
-    if v.environment_level == "prod"
+    if v.environment_level != "Contributor"
   }
 
   principal_id         = data.azuread_group.pim_approvers.object_id
@@ -34,15 +34,15 @@ resource "azurerm_role_assignment" "pim_approvers_contributor" {
   role_definition_name = "Contributor"
 }
 
-# Assign Contributor role to Production groups and subscriptions
+# Assign PIM Contributor minus delete role to Production groups and subscriptions
 resource "azurerm_role_assignment" "production_contributor" {
   for_each = {
     for k, v in var.groups : k => v
-    if v.environment_level == "prod"
+    if v.environment_level != "Contributor"
   }
 
   principal_id         = azuread_group.contributors[each.value.id].object_id
   scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
-  role_definition_name = var.production_contributor_role
+  role_definition_name = each.value.contributor_role
 }
 
