@@ -32,5 +32,3 @@ enrollment_account_name = "322108"
 
 # Create custom_roles for sandbox/enterprise component
 create_custom_roles = true
-
-contributor_role = "Azure Contributor Role minus deletes"
