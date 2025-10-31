@@ -9,7 +9,7 @@ module "enterprise" {
   root_name      = var.root_name
   root_parent_id = data.azurerm_client_config.core.tenant_id
 
-  create_custom_roles = var.create_custom_roles
+  create_custom_roles           = var.create_custom_roles
   non_prod_contributor_group_id = data.azuread_group.dts_platform_ops.object_id
 
   management_groups = {
