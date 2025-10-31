@@ -251,5 +251,3 @@ enrollment_account_name = "233705"
 add_service_connection_to_ado = true
 
 contributor_role = "Azure Contributor Role minus deletes"
-
-non_prod_contributor_group_id = "e7ea2042-4ced-45dd-8ae3-e051c6551789"

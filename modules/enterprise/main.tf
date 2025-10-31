@@ -72,9 +72,9 @@ resource "azurerm_management_group" "level_6" {
 
 # Assign Contributor role to Non-Prod subscriptions for Non-Prod Contributor group
 resource "azurerm_role_assignment" "non_prod_contributor" {
-  for_each = toset(local.non_prod_subscriptions)
+  count = var.non_prod_contributor_group_id == null ? 0 : length(local.non_prod_subscriptions)
 
-  scope                = "/subscriptions/${each.value}"
+  scope                = "/subscriptions/${local.non_prod_subscriptions[count.index]}"
   role_definition_name = "Contributor"
   principal_id         = var.non_prod_contributor_group_id
 }

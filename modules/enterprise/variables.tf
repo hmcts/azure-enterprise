@@ -20,4 +20,5 @@ variable "management_groups" {
 variable "non_prod_contributor_group_id" {
   description = "Object ID of the DTS Platform Operations group"
   type        = string
+  default     = null
 }
