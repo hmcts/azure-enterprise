@@ -115,8 +115,3 @@ variable "contributor_role" {
   default = "Contributor"
 }
 
-variable "non_prod_contributor_group_id" {
-  description = "Object ID of the DTS Platform Operations group"
-  type        = string
-}
-

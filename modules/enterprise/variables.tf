@@ -16,3 +16,8 @@ variable "management_groups" {
     error_message = "The management_groups keys must be between 2 to 36 characters long and can only contain lowercase letters, numbers and hyphens."
   }
 }
+
+variable "non_prod_contributor_group_id" {
+  description = "Object ID of the DTS Platform Operations group"
+  type        = string
+}
