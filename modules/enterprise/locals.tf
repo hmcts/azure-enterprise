@@ -12,4 +12,9 @@ locals {
       actions     = ["Microsoft.Network/applicationGateways/backendhealth/action"]
     },
   }
+
+  non_prod_subscriptions = flatten([
+    for mg_key, mg in var.management_groups : mg.subscription_ids
+    if !can(regex("Production", mg.display_name))
+  ])
 }

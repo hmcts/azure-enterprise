@@ -6,6 +6,8 @@ module "enterprise" {
   root_parent_id = data.azurerm_client_config.core.tenant_id
 
   create_custom_roles = var.create_custom_roles
+  
+  non_prod_contributor_group_id = var.non_prod_contributor_group_id
 
   management_groups = {
     HMCTS = {

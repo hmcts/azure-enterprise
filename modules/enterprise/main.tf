@@ -69,3 +69,11 @@ resource "azurerm_management_group" "level_6" {
 
   depends_on = [azurerm_management_group.level_5]
 }
+
+resource "azurerm_role_assignment" "non_prod_contributor" {
+  for_each = toset(local.non_prod_subscriptions)
+
+  scope                = "/subscriptions/${each.value}"
+  role_definition_name = "Contributor"
+  principal_id         = var.non_prod_contributor_group_id
+}
