@@ -7,8 +7,6 @@ module "enterprise" {
 
   create_custom_roles = var.create_custom_roles
 
-  non_prod_contributor_group_id = var.non_prod_contributor_group_id
-
   management_groups = {
     HMCTS = {
       display_name               = "HMCTS"
