@@ -70,6 +70,7 @@ resource "azurerm_management_group" "level_6" {
   depends_on = [azurerm_management_group.level_5]
 }
 
+# Assign Contributor role to Non-Prod subscriptions for Non-Prod Contributor group
 resource "azurerm_role_assignment" "non_prod_contributor" {
   for_each = toset(local.non_prod_subscriptions)
 
