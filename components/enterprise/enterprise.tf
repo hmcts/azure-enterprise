@@ -1,7 +1,3 @@
-data "azuread_group" "dts_platform_ops" {
-  display_name = "DTS Platform Operations"
-}
-
 module "enterprise" {
   source = "../../modules/enterprise"
 
@@ -10,7 +6,6 @@ module "enterprise" {
   root_parent_id = data.azurerm_client_config.core.tenant_id
 
   create_custom_roles = var.create_custom_roles
-  non_prod_contributor_group_id = data.azuread_group.dts_platform_ops.object_id
 
   management_groups = {
     HMCTS = {
@@ -140,4 +135,6 @@ module "enterprise" {
       contributor_role           = var.contributor_role
     }
   }
+
+  enable_platform_ops_non_prod_membership = true
 }

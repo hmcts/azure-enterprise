@@ -17,8 +17,8 @@ variable "management_groups" {
   }
 }
 
-variable "non_prod_contributor_group_id" {
-  description = "Object ID of the DTS Platform Operations group"
-  type        = string
-  default     = null
+variable "enable_platform_ops_non_prod_membership" {
+  description = "If true, add Platform Operations SC group as member of all non-prod DTS Contributors groups."
+  type        = bool
+  default     = true
 }
