@@ -13,7 +13,7 @@ locals {
     }
     # to exclude production management groups including those top-level ones HMCTS, CFT, SDS, Platform, Security,
     # Crime, and Heritage
-    if !can(regex("(?i)(- production|hmcts|cft|sds|platform|security|crime|heritage)$", mg.display_name))
+    if !can(regex("(?i)(- production|^(hmcts|cft|sds|platform|security|crime|heritage))$", mg.display_name))
   }
 }
 
