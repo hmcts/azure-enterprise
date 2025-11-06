@@ -1,3 +1,4 @@
+```mermaid
 graph TD
 %% Outer component layer
     subgraph COMPONENT [components/enterprise]
@@ -62,3 +63,6 @@ graph TD
 
     ENVS -. uses tags / subscriptions (indirect) .- SUBS
 ENVS -. governed by MG placement .- HIERARCHY
+
+
+```
