@@ -16,9 +16,3 @@ variable "management_groups" {
     error_message = "The management_groups keys must be between 2 to 36 characters long and can only contain lowercase letters, numbers and hyphens."
   }
 }
-
-variable "enable_platform_ops_non_prod_membership" {
-  description = "If true, add Platform Operations SC group as member of all non-prod DTS Contributors groups."
-  type        = bool
-  default     = true
-}

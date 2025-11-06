@@ -135,6 +135,4 @@ module "enterprise" {
       contributor_role           = var.contributor_role
     }
   }
-
-  enable_platform_ops_non_prod_membership = true
 }
