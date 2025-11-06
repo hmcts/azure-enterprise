@@ -123,6 +123,10 @@ Create a 'help request' in the [#platops-help](https://hmcts-reform.slack.com/ap
 <!-- TODO update this when we get a better example that's just doing what is required -->
 [Example pull request](https://github.com/hmcts/azure-enterprise/pull/11)
 
+### Module dependencies for building management group hierarchy
+
+[Terraform module enterprise](./module_dependency_mg.md)
+
 ## Renaming a subscription
 
 In [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environments/prod/prod.tfvars) your subscription will look something like:
