@@ -13,19 +13,19 @@ locals {
     }
     # to exclude production management groups including those top-level ones HMCTS, CFT, SDS, Platform, Security,
     # Crime, and Heritage
-    if !can(regex("(?i)production", mg.display_name)) && !can(regex("(?i)^(hmcts|cft|sds|platform|security|crime|heritage)$", mg.display_name))
+    if !can(regex("(?i)(non[- ]?production|sandbox)", mg.display_name))
   }
-}
 
-# Lookup each non-prod DTS Contributors group
-data "azuread_group" "dts_contributors_mg" {
-  for_each     = local.mg_non_prod
-  display_name = "DTS Contributors (mg:${each.value.id})"
+  contributors_non_prod = {
+    for k, g in azuread_group.contributors :
+    k => g
+    if contains(keys(local.mg_non_prod), k)
+  }
 }
 
 # Add Platform Operations as member
 resource "azuread_group_member" "platform_ops_in_non_prod_contributors" {
-  for_each         = data.azuread_group.dts_contributors_mg
+  for_each         = local.contributors_non_prod
   group_object_id  = each.value.object_id
   member_object_id = data.azuread_group.platform_ops.object_id
 }
