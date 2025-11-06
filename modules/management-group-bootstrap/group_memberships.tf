@@ -13,7 +13,7 @@ locals {
     }
     # to exclude production management groups including those top-level ones HMCTS, CFT, SDS, Platform, Security,
     # Crime, and Heritage
-    if !can(regex("(?i)(non[- ]?production|sandbox)", mg.display_name))
+    if can(regex("(?i)(non[- ]?production|sandbox)", mg.display_name))
   }
 
   contributors_non_prod = {
