@@ -78,10 +78,6 @@ sds_non_production_subscriptions = {
   DTS-SHAREDSERVICES-TEST = {
     deploy_acme = true
   }
-  Reform-CFT-VH-Dev = {
-    deploy_acme = true
-    environment = "dev"
-  }
   DTS-ARCHIVING-TEST = {
     environment = "test"
     product     = "arm"
