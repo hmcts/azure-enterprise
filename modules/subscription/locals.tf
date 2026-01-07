@@ -26,11 +26,11 @@ locals {
       description = "Grants reader permissions to the ${azurerm_subscription.this.subscription_name} subscription"
     }
     "Security Reader" = {
-      name        = "DTS Security Readers (sub: ${lower(azurerm_subscription.this.subscription_name)})"
+      name        = "DTS Security Readers (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Grants security reader permissions to the ${azurerm_subscription.this.subscription_name} subscription"
     }
     "Storage Blob Data Reader" = {
-      name        = "DTS Blob Readers (sub: ${lower(azurerm_subscription.this.subscription_name)})"
+      name        = "DTS Blob Readers (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Grants storage blob data contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"
     }
     "Owner" = {
