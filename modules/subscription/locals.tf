@@ -35,11 +35,11 @@ locals {
       name        = "DTS Owners (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Grants owner permissions to the ${azurerm_subscription.this.subscription_name} subscription"
     }
-      # Only create 'Contributor Eligible' group for all subscriptions except SBOX and Sandbox
-      "Contributor Eligible" = !(lower(azurerm_subscription.this.subscription_name) == "Sandbox" || lower(azurerm_subscription.this.subscription_name) == "SBOX") ? {
-        name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
-        description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
-      } : null
+    # Only create Contributor Eligible group for non-sandbox and non-sbox subscriptions
+    "Contributor Eligible" = lower(azurerm_subscription.this.subscription_name) != "sandbox" && lower(azurerm_subscription.this.subscription_name) != "sbox" ? {
+      name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
+      description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
+    } : null
   }
   members = {
     "Azure Kubernetes Service Cluster Admin Role" = {
@@ -56,6 +56,9 @@ locals {
     }
     "Owner" = {
       members = [azuread_service_principal.sp.object_id]
+    }
+    "Contributor Eligible" = {
+      members = []
     }
   }
   members_list = merge([for key, value in local.members : {
@@ -92,4 +95,3 @@ locals {
     }
   }
 }
-
