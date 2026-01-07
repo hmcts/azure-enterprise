@@ -38,7 +38,7 @@ locals {
     "Contributor Eligible" = {
       name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
-      }
+    }
   }
   members = {
     "Azure Kubernetes Service Cluster Admin Role" = {
