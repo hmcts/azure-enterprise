@@ -35,10 +35,11 @@ locals {
       name        = "DTS Owners (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Grants owner permissions to the ${azurerm_subscription.this.subscription_name} subscription"
     }
-    "Contributor Eligible" = {
-      name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
-    }
+      # Only create 'Contributor Eligible' group for all subscriptions except SBOX and Sandbox
+      "Contributor Eligible" = !(lower(azurerm_subscription.this.subscription_name) == "Sandbox" || lower(azurerm_subscription.this.subscription_name) == "SBOX") ? {
+        name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
+      } : null
   }
   members = {
     "Azure Kubernetes Service Cluster Admin Role" = {
