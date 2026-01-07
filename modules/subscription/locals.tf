@@ -38,12 +38,12 @@ locals {
     }
   }
 
-  conditional_groups = lower(azurerm_subscription.this.subscription_name) != "sandbox" && lower(azurerm_subscription.this.subscription_name) != "sbox" ? {
-    "Contributor Eligible" = {
-      name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
-    }
-  } : {}
+  conditional_groups = !contains(split("-", lower(azurerm_subscription.this. subscription_name)), "sandbox") && !contains(split("-", lower(azurerm_subscription.this.subscription_name)), "sbox") ? {
+  "Contributor Eligible" = {
+    name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
+    description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this. subscription_name} subscription."
+  }
+} :  {}
 
   all_groups = merge(local.groups, local.conditional_groups)
 
