@@ -3,7 +3,6 @@ locals {
   acme_app_name = "acme-${lower(azurerm_subscription.this.subscription_name)}"
   acme_uri      = replace(lower(azurerm_subscription.this.subscription_name), "sharedservices", "sds")
   
-  # Keep original groups structure - DO NOT WRAP WITH MERGE
   groups = {
     "Azure Kubernetes Service Cluster Admin Role" = {
       name        = "DTS AKS Administrators (sub:${lower(azurerm_subscription.this.subscription_name)})"
