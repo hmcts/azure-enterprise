@@ -27,5 +27,5 @@ locals {
 resource "azuread_group_member" "platform_ops_in_non_prod_contributors" {
   for_each         = local.contributors_non_prod
   group_object_id  = each.value.object_id
-  member_object_id = "data.azuread_group.platform_ops.object_id"
+  member_object_id = data.azuread_group.platform_ops.object_id
 }
