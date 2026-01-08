@@ -37,15 +37,14 @@ locals {
     }
   }
 
-  contributor_groups = !strcontains(lower(azurerm_subscription.this. subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
+  contributor_groups = !strcontains(lower(azurerm_subscription.this.subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
     "Contributor Eligible" = {
-      name        = "DTS Contributors Eligible (sub: ${lower(azurerm_subscription.this.subscription_name)})"
+      name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
     }
   } : {}
 
-    all_groups = merge(local.groups, local. contributor_groups)
-
+    all_groups = merge(local.groups, local.contributor_groups)
 
   members = {
     "Azure Kubernetes Service Cluster Admin Role" = {
