@@ -1,50 +1,50 @@
 locals {
-  app_name      = "DTS Bootstrap (sub:${lower(azurerm_subscription.this.subscription_name)})"
+  app_name      = "DTS Bootstrap (sub:${lower(azurerm_subscription.this. subscription_name)})"
   acme_app_name = "acme-${lower(azurerm_subscription.this.subscription_name)}"
   acme_uri      = replace(lower(azurerm_subscription.this.subscription_name), "sharedservices", "sds")
-  groups = {
-    "Azure Kubernetes Service Cluster Admin Role" = {
-      name        = "DTS AKS Administrators (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Grants aks cluster admin permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-    }
-    "Azure Kubernetes Service Cluster User Role" = {
-      name        = "DTS AKS Users (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Grants aks cluster user permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-    }
-    "Contributor" = {
-      name        = "DTS Contributors (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Grants contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-    }
-    "Key Vault Administrator" = {
-      name        = "DTS Key Vault Administrators (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Grants key vault administrator permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-    }
-    "Reader" = {
-      name        = "DTS Readers (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Grants reader permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-    }
-    "Security Reader" = {
-      name        = "DTS Security Readers (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Grants security reader permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-    }
-    "Storage Blob Data Reader" = {
-      name        = "DTS Blob Readers (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Grants storage blob data contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-    }
-    "Owner" = {
-      name        = "DTS Owners (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Grants owner permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-    }
-  }
-
-  contributor_groups = !strcontains(lower(azurerm_subscription.this.subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
-    "Contributor Eligible" = {
-      name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
-      description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
-    }
-  } : {}
-
-    all_groups = merge(local.groups, local.contributor_groups)
+  
+  groups = merge(
+    {
+      "Azure Kubernetes Service Cluster Admin Role" = {
+        name        = "DTS AKS Administrators (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Grants aks cluster admin permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      }
+      "Azure Kubernetes Service Cluster User Role" = {
+        name        = "DTS AKS Users (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Grants aks cluster user permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      }
+      "Contributor" = {
+        name        = "DTS Contributors (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Grants contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      }
+      "Key Vault Administrator" = {
+        name        = "DTS Key Vault Administrators (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Grants key vault administrator permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      }
+      "Reader" = {
+        name        = "DTS Readers (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Grants reader permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      }
+      "Security Reader" = {
+        name        = "DTS Security Readers (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Grants security reader permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      }
+      "Storage Blob Data Reader" = {
+        name        = "DTS Blob Readers (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Grants storage blob data contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      }
+      "Owner" = {
+        name        = "DTS Owners (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Grants owner permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      }
+    },
+    !strcontains(lower(azurerm_subscription.this.subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
+      "Contributor Eligible" = {
+        name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
+        description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
+      }
+    } : {}
+  )
 
   members = {
     "Azure Kubernetes Service Cluster Admin Role" = {
