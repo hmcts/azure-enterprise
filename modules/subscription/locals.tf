@@ -36,7 +36,7 @@ locals {
       name        = "DTS Owners (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Grants owner permissions to the ${azurerm_subscription.this.subscription_name} subscription"
     }
-  },
+    },
     !strcontains(lower(azurerm_subscription.this.subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
       "Contributor Eligible" = {
         name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
