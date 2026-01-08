@@ -1,6 +1,6 @@
 # Lookup Platform Operations SC group
 data "azuread_group" "platform_ops" {
-  display_name = "DTS Platform Operations"
+  object_id = "e7ea2042-4ced-45dd-8ae3-e051c6551789"
 }
 
 # Filter out production management groups
@@ -27,5 +27,5 @@ locals {
 resource "azuread_group_member" "platform_ops_in_non_prod_contributors" {
   for_each         = local.contributors_non_prod
   group_object_id  = each.value.object_id
-  member_object_id = "e7ea2042-4ced-45dd-8ae3-e051c6551789"
+  member_object_id = "data.azuread_group.platform_ops.object_id"
 }
