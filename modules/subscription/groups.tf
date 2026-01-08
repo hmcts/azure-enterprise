@@ -1,5 +1,5 @@
 resource "azuread_group" "groups" {
-  for_each                = local.groups
+  for_each                = local.all_groups
   display_name            = each.value.name
   description             = each.value.description
   prevent_duplicate_names = true

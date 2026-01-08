@@ -2,6 +2,7 @@ locals {
   app_name      = "DTS Bootstrap (sub:${lower(azurerm_subscription.this.subscription_name)})"
   acme_app_name = "acme-${lower(azurerm_subscription.this.subscription_name)}"
   acme_uri      = replace(lower(azurerm_subscription.this.subscription_name), "sharedservices", "sds")
+
   groups = {
     "Azure Kubernetes Service Cluster Admin Role" = {
       name        = "DTS AKS Administrators (sub:${lower(azurerm_subscription.this.subscription_name)})"
@@ -36,6 +37,17 @@ locals {
       description = "Grants owner permissions to the ${azurerm_subscription.this.subscription_name} subscription"
     }
   }
+
+  contributor_groups = !strcontains(lower(azurerm_subscription.this.subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
+    "Contributor Eligible" = {
+      name        = "DTS Contributors Eligible (sub: ${lower(azurerm_subscription.this.subscription_name)})"
+      description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
+    }
+  } : {}
+
+  all_groups = merge(local.groups, local.contributor_groups)
+
+
   members = {
     "Azure Kubernetes Service Cluster Admin Role" = {
       members = [data.azuread_group.aks_global_admin.object_id]
@@ -87,4 +99,3 @@ locals {
     }
   }
 }
-
