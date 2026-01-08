@@ -1,5 +1,13 @@
 resource "azuread_group" "groups" {
-  for_each                = local.all_groups
+  for_each                = local.groups
+  display_name            = each.value.name
+  description             = each.value.description
+  prevent_duplicate_names = true
+  security_enabled        = true
+}
+
+resource "azuread_group" "contributor_groups" {
+  for_each                = local.contributor_groups
   display_name            = each.value.name
   description             = each.value.description
   prevent_duplicate_names = true

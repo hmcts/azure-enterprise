@@ -44,8 +44,6 @@ locals {
     }
   } : {}
 
-  all_groups = merge(local.groups, local.contributor_groups)
-
 
   members = {
     "Azure Kubernetes Service Cluster Admin Role" = {
