@@ -7,7 +7,7 @@ locals {
 
   # Environment detection based on management group names
   is_sandbox_environment = anytrue([
-    for k, mg in var.groups : 
+    for k, mg in var.groups :
     can(regex("(?i)(sandbox|sbox)", mg.display_name))
   ])
 
@@ -26,8 +26,8 @@ locals {
   }
 
   # Selected group IDs based on detected environment
-  platform_ops_group_id  = local.is_sandbox_environment ? local.environment_group_ids.platform_ops.sandbox_id : local.environment_group_ids.platform_ops.prod_id
-    
+  platform_ops_group_id = local.is_sandbox_environment ? local.environment_group_ids.platform_ops.sandbox_id : local.environment_group_ids.platform_ops.prod_id
+
   pim_approvers_group_id = local.is_sandbox_environment ? local.environment_group_ids.pim_approvers.sandbox_id : local.environment_group_ids.pim_approvers.prod_id
 
 }
