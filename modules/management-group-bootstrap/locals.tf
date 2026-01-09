@@ -10,7 +10,7 @@ locals {
     for k, mg in var.groups :
     can(regex("(?i)(sandbox|sbox)", mg.display_name))
   ])
-  
+
   is_prod_environment = !local.is_sandbox_environment
 
   environment_group_ids = {
@@ -26,7 +26,7 @@ locals {
     }
   }
 
-  platform_ops_group_id  = local.is_sandbox_environment ? local.environment_group_ids.platform_ops.sandbox_id : local.environment_group_ids.platform_ops.prod_id
+  platform_ops_group_id = local.is_sandbox_environment ? local.environment_group_ids.platform_ops.sandbox_id : local.environment_group_ids.platform_ops.prod_id
 
   pim_approvers_group_id = local.is_sandbox_environment ? local.environment_group_ids.pim_approvers.sandbox_id : local.environment_group_ids.pim_approvers.prod_id
 }
