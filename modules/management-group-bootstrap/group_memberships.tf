@@ -1,6 +1,6 @@
 # Lookup Platform Operations SC group
 data "azuread_group" "platform_ops" {
-  display_name = "DTS Platform Operations"
+  object_id = "e7ea2042-4ced-45dd-8ae3-e051c6551789"
 }
 
 # Filter out production management groups
