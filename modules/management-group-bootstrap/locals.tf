@@ -5,12 +5,17 @@ locals {
 
   group_assignment_product_readers = setproduct(keys(var.groups), local.custom_role_assignments_readers)
 
-  all_groups_sandbox_or_nonprod = alltrue([
+  has_sandbox_indicators = anytrue([
     for k, mg in var.groups :
     can(regex("(?i)(sandbox|sbox|nonprod|non-prod)", mg.display_name))
   ])
 
-  is_sandbox_environment = local.all_groups_sandbox_or_nonprod
+  has_prod_suffix = anytrue([
+    for k, mg in var.groups :
+    can(regex("(?i)-prod$", mg.display_name))
+  ])
+
+  is_sandbox_environment = local.has_sandbox_indicators && !local.has_prod_suffix
   is_prod_environment    = !local.is_sandbox_environment
 
   group_ids = {
