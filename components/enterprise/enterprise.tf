@@ -3,6 +3,7 @@ module "enterprise" {
 
   root_id        = var.root_id
   root_name      = var.root_name
+  env             = var.env
   root_parent_id = data.azurerm_client_config.core.tenant_id
 
   create_custom_roles = var.create_custom_roles
