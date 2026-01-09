@@ -1,35 +1,45 @@
-resource "azuread_group" "contributors" {
-  for_each = var.groups
-
-  display_name            = "DTS Contributors (mg:${each.value.id})"
-  prevent_duplicate_names = true
-  security_enabled        = true
+# Derive environment from management group context - NO environment variable needed
+locals {
+  # Auto-detect if we're in sandbox based on group names
+  is_sandbox = anytrue([
+    for k, mg in var.groups : 
+    can(regex("(?i)(sandbox|sbox)", mg.display_name))
+  ])
+  
+  platform_ops_group_id = local.is_sandbox ? "9b200a9c-8c0b-497a-9246-2c9b4dcc0d02" :  "e7ea2042-4ced-45dd-8ae3-e051c6551789"
 }
 
-resource "azurerm_role_assignment" "contributors" {
-  for_each = {
-    for k, v in var.groups : k => v
+# Lookup Platform Operations SC group
+data "azuread_group" "platform_ops" {
+  object_id = local.platform_ops_group_id
+}
+
+# Filter out production management groups
+locals {
+  mg_non_prod = {
+    for k, mg in var.groups :
+    k => {
+      id           = k
+      display_name = mg.display_name
+    }
+    if can(regex("(?i)(non[- ]?production|sandbox)", mg.display_name))
   }
 
-  principal_id         = azuread_group.contributors[each.value.id].object_id
-  scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
-  role_definition_name = each.value.contributor_role
-}
-
-# Data source to lookup the existing PIM approvers group
-data "azuread_group" "pim_approvers" {
-  object_id = var.environment == "sandbox" ? "3e1fcd71-06ff-4531-a2fa-db6468830fda" : "cfdbb1cc-e789-4d2c-b390-1d9ed77603d3"
-}
-
-# Assign Contributor role to PIM Approvers group at Prod level for emergency access
-resource "azurerm_role_assignment" "pim_approvers_contributor" {
-  for_each = {
-    for k, v in var.groups : k => v
-    if v.contributor_role != "Contributor"
+  contributors_non_prod = {
+    for k, g in azuread_group.contributors :
+    k => g
+    if contains(keys(local.mg_non_prod), k)
   }
-
-  principal_id         = data.azuread_group.pim_approvers.object_id
-  scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
-  role_definition_name = "Contributor"
 }
 
+# Add Platform Operations as member
+resource "azuread_group_member" "platform_ops_in_non_prod_contributors" {
+  for_each = local.contributors_non_prod
+  
+  group_object_id  = each.value.object_id
+  member_object_id = data.azuread_group.platform_ops.object_id
+  
+  lifecycle {
+    create_before_destroy = true
+  }
+}

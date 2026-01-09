@@ -1,6 +1,6 @@
 # Lookup Platform Operations SC group
 data "azuread_group" "platform_ops" {
-  object_id = var.environment == "sandbox" ? "9b200a9c-8c0b-497a-9246-2c9b4dcc0d02" : "e7ea2042-4ced-45dd-8ae3-e051c6551789"
+  object_id = local.platform_ops_group_id
 }
 
 # Filter out production management groups
