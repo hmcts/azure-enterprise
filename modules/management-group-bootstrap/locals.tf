@@ -5,13 +5,14 @@ locals {
 
   group_assignment_product_readers = setproduct(keys(var.groups), local.custom_role_assignments_readers)
 
-  # Environment detection based on management group names
+  # Environment detection
   is_sandbox_environment = anytrue([
     for k, mg in var.groups :
     can(regex("(?i)(sandbox|sbox)", mg.display_name))
   ])
+  
+  is_prod_environment = !local.is_sandbox_environment
 
-  # Centralized environment-specific group ID mappings
   environment_group_ids = {
     platform_ops = {
       display_name = "DTS Platform Operations"
@@ -25,9 +26,7 @@ locals {
     }
   }
 
-  # Selected group IDs based on detected environment
-  platform_ops_group_id = local.is_sandbox_environment ? local.environment_group_ids.platform_ops.sandbox_id : local.environment_group_ids.platform_ops.prod_id
+  platform_ops_group_id  = local.is_sandbox_environment ? local.environment_group_ids.platform_ops.sandbox_id : local.environment_group_ids.platform_ops.prod_id
 
   pim_approvers_group_id = local.is_sandbox_environment ? local.environment_group_ids.pim_approvers.sandbox_id : local.environment_group_ids.pim_approvers.prod_id
-
 }
