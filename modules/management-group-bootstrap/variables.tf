@@ -3,6 +3,3 @@ variable "groups" {
 }
 
 variable "custom_roles" {}
-
-variable "environment" {
-}
