@@ -5,14 +5,13 @@ locals {
 
   group_assignment_product_readers = setproduct(keys(var.groups), local.custom_role_assignments_readers)
 
-  has_production_groups = anytrue([
+  all_groups_sandbox_or_nonprod = alltrue([
     for k, mg in var.groups :
-    can(regex("(?i)-prod$", mg.display_name)) ||
-    !can(regex("(?i)(sandbox|sbox|nonprod|non-prod)", mg.display_name))
+    can(regex("(?i)(sandbox|sbox|nonprod|non-prod)", mg.display_name))
   ])
 
-  is_prod_environment    = local.has_production_groups
-  is_sandbox_environment = !local.is_prod_environment
+  is_sandbox_environment = local.all_groups_sandbox_or_nonprod
+  is_prod_environment    = !local.is_sandbox_environment
 
   group_ids = {
     platform_ops = {
@@ -25,7 +24,7 @@ locals {
     }
   }
 
-  platform_ops_group_id = local.is_prod_environment ? local.group_ids.platform_ops.prod : local.group_ids.platform_ops.sandbox
+  platform_ops_group_id = local.is_sandbox_environment ? local.group_ids.platform_ops.sandbox : local.group_ids.platform_ops.prod
 
-  pim_approvers_group_id = local.is_prod_environment ? local.group_ids.pim_approvers.prod : local.group_ids.pim_approvers.sandbox
+  pim_approvers_group_id = local.is_sandbox_environment ? local.group_ids.pim_approvers.sandbox : local.group_ids.pim_approvers.prod
 }
