@@ -18,7 +18,7 @@ resource "azurerm_role_assignment" "contributors" {
 
 # Data source to lookup the existing PIM approvers group
 data "azuread_group" "pim_approvers" {
-  object_id = "cfdbb1cc-e789-4d2c-b390-1d9ed77603d3"
+  object_id = var.environment == "sandbox" ? "3e1fcd71-06ff-4531-a2fa-db6468830fda" : "cfdbb1cc-e789-4d2c-b390-1d9ed77603d3"
 }
 
 # Assign Contributor role to PIM Approvers group at Prod level for emergency access
