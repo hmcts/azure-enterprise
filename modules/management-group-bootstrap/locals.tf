@@ -5,18 +5,14 @@ locals {
 
   group_assignment_product_readers = setproduct(keys(var.groups), local.custom_role_assignments_readers)
 
-  has_sandbox_indicators = anytrue([
+  # Simple check: if ANY group has "Sandbox" or "Sbox" in the name, it's sandbox
+  # Otherwise, it's production
+  is_sandbox_environment = anytrue([
     for k, mg in var.groups :
-    can(regex("(?i)(sandbox|sbox|nonprod|non-prod)", mg.display_name))
+    can(regex("(?i)(sandbox|sbox)", mg.display_name))
   ])
 
-  has_prod_suffix = anytrue([
-    for k, mg in var.groups :
-    can(regex("(?i)-prod$", mg.display_name))
-  ])
-
-  is_sandbox_environment = local.has_sandbox_indicators && !local.has_prod_suffix
-  is_prod_environment    = !local.is_sandbox_environment
+  is_prod_environment = !local.is_sandbox_environment
 
   group_ids = {
     platform_ops = {
