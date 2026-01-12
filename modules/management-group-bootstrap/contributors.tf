@@ -23,7 +23,7 @@ resource "azurerm_role_assignment" "pim_approvers_contributor" {
     if v.contributor_role != "Contributor"
   }
 
-  principal_id         = data.azuread_group.pim_approvers.object_id
+  principal_id         = var.pim_approvers
   scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
   role_definition_name = "Contributor"
 }
