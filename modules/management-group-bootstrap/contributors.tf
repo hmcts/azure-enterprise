@@ -16,11 +16,6 @@ resource "azurerm_role_assignment" "contributors" {
   role_definition_name = each.value.contributor_role
 }
 
-# Data source to lookup the existing PIM approvers group
-data "azuread_group" "pim_approvers" {
-  object_id = local.pim_approvers_group_id
-}
-
 # Assign Contributor role to PIM Approvers group at Prod level for emergency access
 resource "azurerm_role_assignment" "pim_approvers_contributor" {
   for_each = {
