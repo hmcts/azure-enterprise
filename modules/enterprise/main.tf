@@ -8,13 +8,13 @@ resource "azurerm_management_group" "level_1" {
 }
 
 module "bootstrap" {
-  source       = "../management-group-bootstrap"
-  groups       = local.management_groups
-  custom_roles = var.create_custom_roles == true ? azurerm_role_definition.custom_role_definitions : data.azurerm_role_definition.custom_role_definitions
-  env          = var.env
+  source              = "../management-group-bootstrap"
+  groups              = local.management_groups
+  custom_roles        = var.create_custom_roles == true ? azurerm_role_definition.custom_role_definitions : data.azurerm_role_definition.custom_role_definitions
+  env                 = var.env
   platform_operations = var.platform_operations
   pim_approvers       = var.pim_approvers
-  depends_on   = [azurerm_management_group.level_6]
+  depends_on          = [azurerm_management_group.level_6]
 }
 
 resource "azurerm_management_group" "level_2" {
