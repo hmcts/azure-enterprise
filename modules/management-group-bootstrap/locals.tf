@@ -11,10 +11,10 @@ locals {
   group_ids = {
     platform_ops = {
       sandbox = var.platform_operations
-      prod    = var.pim_approvers
+      prod    = var.platform_operations
     }
     pim_approvers = {
-      sandbox = var.platform_operations
+      sandbox = var.pim_approvers
       prod    = var.pim_approvers
     }
   }
