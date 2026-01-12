@@ -10,12 +10,12 @@ locals {
 
   group_ids = {
     platform_ops = {
-      sandbox = "9b200a9c-8c0b-497a-9246-2c9b4dcc0d02"
-      prod    = "e7ea2042-4ced-45dd-8ae3-e051c6551789"
+      sandbox = var.platform_operations
+      prod    = var.pim_approvers
     }
     pim_approvers = {
-      sandbox = "3e1fcd71-06ff-4531-a2fa-db6468830fda"
-      prod    = "cfdbb1cc-e789-4d2c-b390-1d9ed77603d3"
+      sandbox = var.platform_operations
+      prod    = var.pim_approvers
     }
   }
 

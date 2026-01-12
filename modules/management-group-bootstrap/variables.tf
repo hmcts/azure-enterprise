@@ -13,3 +13,9 @@ variable "env" {
     error_message = "Environment must be 'sandbox' or 'prod'."
   }
 }
+
+variable "platform_operations" { 
+}
+
+variable "pim_approvers" {
+}
