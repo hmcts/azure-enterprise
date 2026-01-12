@@ -16,3 +16,18 @@ variable "management_groups" {
     error_message = "The management_groups keys must be between 2 to 36 characters long and can only contain lowercase letters, numbers and hyphens."
   }
 }
+
+variable "env" {
+  description = "Environment name (sandbox or prod)"
+  type        = string
+}
+
+variable "platform_operations" {
+  description = "Object ID of the Platform Operations group"
+  type        = string
+}
+
+variable "pim_approvers" {
+  description = "Object ID of the PIM Approvers group"
+  type        = string
+}

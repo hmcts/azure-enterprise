@@ -247,3 +247,7 @@ enrollment_account_name = "233705"
 add_service_connection_to_ado = true
 
 contributor_role = "Azure Contributor Role minus deletes"
+
+# Group Object IDs
+platform_operations = "e7ea2042-4ced-45dd-8ae3-e051c6551789"
+pim_approvers       = "cfdbb1cc-e789-4d2c-b390-1d9ed77603d3"

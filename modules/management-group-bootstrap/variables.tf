@@ -3,3 +3,19 @@ variable "groups" {
 }
 
 variable "custom_roles" {}
+
+variable "env" {
+  description = "Environment name (sandbox or prod)"
+  type        = string
+
+  validation {
+    condition     = contains(["sandbox", "prod"], var.env)
+    error_message = "Environment must be 'sandbox' or 'prod'."
+  }
+}
+
+variable "platform_operations" {
+}
+
+variable "pim_approvers" {
+}

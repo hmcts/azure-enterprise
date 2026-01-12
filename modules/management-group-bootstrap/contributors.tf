@@ -16,11 +16,6 @@ resource "azurerm_role_assignment" "contributors" {
   role_definition_name = each.value.contributor_role
 }
 
-# Data source to lookup the existing PIM approvers group
-data "azuread_group" "pim_approvers" {
-  display_name = "DTS Azure PIM Approvers (CNP)"
-}
-
 # Assign Contributor role to PIM Approvers group at Prod level for emergency access
 resource "azurerm_role_assignment" "pim_approvers_contributor" {
   for_each = {
@@ -28,8 +23,7 @@ resource "azurerm_role_assignment" "pim_approvers_contributor" {
     if v.contributor_role != "Contributor"
   }
 
-  principal_id         = data.azuread_group.pim_approvers.object_id
+  principal_id         = var.pim_approvers
   scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
   role_definition_name = "Contributor"
 }
-

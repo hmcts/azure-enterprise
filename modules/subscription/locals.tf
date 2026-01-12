@@ -36,6 +36,15 @@ locals {
       description = "Grants owner permissions to the ${azurerm_subscription.this.subscription_name} subscription"
     }
   }
+
+  contributor_groups = !strcontains(lower(azurerm_subscription.this.subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
+    "Contributor Eligible" = {
+      name        = "DTS Contributors Eligible (sub: ${lower(azurerm_subscription.this.subscription_name)})"
+      description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
+    }
+  } : {}
+
+
   members = {
     "Azure Kubernetes Service Cluster Admin Role" = {
       members = [data.azuread_group.aks_global_admin.object_id]
@@ -87,4 +96,3 @@ locals {
     }
   }
 }
-

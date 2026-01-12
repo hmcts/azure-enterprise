@@ -115,3 +115,13 @@ variable "contributor_role" {
   default = "Contributor"
 }
 
+variable "platform_operations" {
+  description = "Object ID of the Platform Operations group"
+  type        = string
+}
+
+variable "pim_approvers" {
+  description = "Object ID of the PIM Approvers group"
+  type        = string
+}
+
