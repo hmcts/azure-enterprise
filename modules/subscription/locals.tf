@@ -95,4 +95,11 @@ locals {
       scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
   }
+
+  global_admin_groups = !strcontains(lower(azurerm_subscription.this.subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
+    "Global Admin Eligible" = {
+      name        = "DTS Global Admin Eligible (sub: ${lower(azurerm_subscription.this.subscription_name)})"
+      description = "Holds users eligible for Global Admin access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
+    }
+  } : {}
 }
