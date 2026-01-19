@@ -14,8 +14,8 @@ resource "azuread_group" "contributor_groups" {
   security_enabled        = true
 }
 
-resource "azuread_group" "global_admin_groups" {
-  for_each                = local.global_admin_groups
+resource "azuread_group" "global_groups" {
+  for_each                = local.global_groups
   display_name            = each.value.name
   description             = each.value.description
   prevent_duplicate_names = true
