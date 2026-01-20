@@ -5,6 +5,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "4.26.0"
     }
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = ">= 2.47.0"
+    }
     azuredevops = {
       source = "microsoft/azuredevops"
     }
@@ -17,5 +21,7 @@ provider "azurerm" {
 }
 
 provider "azuredevops" {}
+
+provider "azuread" {}
 
 data "azurerm_client_config" "core" {}
