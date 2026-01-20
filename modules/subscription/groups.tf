@@ -14,14 +14,6 @@ resource "azuread_group" "contributor_groups" {
   security_enabled        = true
 }
 
-resource "azuread_group" "global_groups" {
-  for_each                = local.global_groups
-  display_name            = each.value.name
-  description             = each.value.description
-  prevent_duplicate_names = true
-  security_enabled        = true
-}
-
 resource "azuread_group_member" "members" {
   for_each         = local.members_list
   group_object_id  = azuread_group.groups[each.value.role].object_id

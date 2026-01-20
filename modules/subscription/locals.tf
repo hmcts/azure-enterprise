@@ -95,11 +95,4 @@ locals {
       scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
   }
-
-  global_groups = {
-    "Global Admin Eligible" = {
-      name        = "DTS Global Admin Eligible"
-      description = "Holds users eligible for Global Admin access via access packages across all subscriptions."
-    }
-  }
 }
