@@ -19,6 +19,11 @@ locals {
     }
   }
 
+  global_admin_roles = [
+    "Owner",
+    "User Access Administrator"
+  ]
+
   platform_ops_group_id  = local.group_ids.platform_ops[var.env]
   pim_approvers_group_id = local.group_ids.pim_approvers[var.env]
 }

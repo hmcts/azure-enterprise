@@ -14,16 +14,11 @@ resource "azuread_group" "global_admin" {
   security_enabled        = true
 }
 
-# Assign Owner role to the active group
-resource "azurerm_role_assignment" "global_admin_owner" {
-  principal_id         = azuread_group.global_admin.object_id
-  scope                = "/providers/Microsoft.Management/managementGroups/${var.root_parent_id}"
-  role_definition_name = "Owner"
-}
+# Assign roles to the active group
+resource "azurerm_role_assignment" "global_admin_roles" {
+  for_each = toset(local.global_admin_roles)
 
-# Assign User Access Administrator role to the active group
-resource "azurerm_role_assignment" "global_admin_user_access" {
   principal_id         = azuread_group.global_admin.object_id
   scope                = "/providers/Microsoft.Management/managementGroups/${var.root_parent_id}"
-  role_definition_name = "User Access Administrator"
+  role_definition_name = each.value
 }
