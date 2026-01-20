@@ -15,11 +15,15 @@ resource "azuread_group" "global_admin" {
 }
 
 # Assign Owner role to the active group
-resource "azurerm_role_assignment" "global_admin" {
+resource "azurerm_role_assignment" "global_admin_owner" {
   principal_id         = azuread_group.global_admin.object_id
-  scope                = data.azurerm_client_config.current.tenant_id
+  scope                = "/providers/Microsoft.Management/managementGroups/${var.root_parent_id}"
   role_definition_name = "Owner"
 }
 
-# Required data source for tenant ID
-data "azurerm_client_config" "current" {}
+# Assign User Access Administrator role to the active group
+resource "azurerm_role_assignment" "global_admin_user_access" {
+  principal_id         = azuread_group.global_admin.object_id
+  scope                = "/providers/Microsoft.Management/managementGroups/${var.root_parent_id}"
+  role_definition_name = "User Access Administrator"
+}
