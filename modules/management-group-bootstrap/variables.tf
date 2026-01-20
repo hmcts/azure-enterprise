@@ -19,3 +19,8 @@ variable "platform_operations" {
 
 variable "pim_approvers" {
 }
+
+variable "root_parent_id" {
+  description = "Root management group ID"
+  type        = string
+}

@@ -14,6 +14,7 @@ module "bootstrap" {
   env                 = var.env
   platform_operations = var.platform_operations
   pim_approvers       = var.pim_approvers
+  root_parent_id      = var.root_parent_id
   depends_on          = [azurerm_management_group.level_6]
 }
 
