@@ -5,12 +5,12 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "4.26.0"
     }
-    azuredevops = {
-      source = "microsoft/azuredevops"
-    }
-    azuread = {
+      azuread = {
       source  = "hashicorp/azuread"
       version = ">= 2.47.0"
+    }
+    azuredevops = {
+      source = "microsoft/azuredevops"
     }
   }
   backend "azurerm" {}
