@@ -1,5 +1,4 @@
 terraform {
-  required_version = "1.11.4"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -7,6 +6,10 @@ terraform {
     }
     azuredevops = {
       source = "microsoft/azuredevops"
+    }
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = ">= 2.47.0"
     }
   }
   backend "azurerm" {}
@@ -17,5 +20,7 @@ provider "azurerm" {
 }
 
 provider "azuredevops" {}
+
+provider "azuread" {}
 
 data "azurerm_client_config" "core" {}
