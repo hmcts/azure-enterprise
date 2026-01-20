@@ -39,14 +39,14 @@ locals {
 
   contributor_groups = !strcontains(lower(azurerm_subscription.this.subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
     "Contributor Eligible" = {
-      name        = "DTS Contributors Eligible (sub: ${lower(azurerm_subscription.this.subscription_name)})"
+      name        = "DTS Contributors Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Holds users eligible for Contributor access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
     }
   } : {}
 
   owner_eligible_groups = !strcontains(lower(azurerm_subscription.this.subscription_name), "sandbox") && !strcontains(lower(azurerm_subscription.this.subscription_name), "sbox") ? {
     "Owner Eligible" = {
-      name        = "DTS Owners Eligible (sub: ${lower(azurerm_subscription.this.subscription_name)})"
+      name        = "DTS Owners Eligible (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Holds users eligible for Owner access via access packages for ${azurerm_subscription.this.subscription_name} subscription."
     }
   } : {}
