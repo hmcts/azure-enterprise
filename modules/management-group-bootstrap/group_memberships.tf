@@ -13,7 +13,8 @@ locals {
     }
     # to exclude production management groups including those top-level ones HMCTS, CFT, SDS, Platform, Security,
     # Crime, and Heritage
-    if can(regex("(?i)(non[- ]?production|sandbox)", mg.display_name))
+    # DTSPO-29259-contributor only on sandbox going forward
+    if can(regex("(?i)(sandbox)", mg.display_name))
   }
 
   contributors_non_prod = {
@@ -23,7 +24,7 @@ locals {
   }
 }
 
-# Add Platform Operations as member
+# Add Platform Operations as member (to sandbox only)
 resource "azuread_group_member" "platform_ops_in_non_prod_contributors" {
   for_each         = local.contributors_non_prod
   group_object_id  = each.value.object_id
