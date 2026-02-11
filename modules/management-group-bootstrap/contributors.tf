@@ -1,10 +1,3 @@
-locals {
-  contributor_scopes = {
-    for name, details in var.groups :
-    name => "/providers/Microsoft.Management/managementGroups/${details.id}"
-  }
-}
-
 resource "azuread_group" "contributors" {
   for_each = var.groups
 
@@ -14,10 +7,12 @@ resource "azuread_group" "contributors" {
 }
 
 resource "azurerm_role_assignment" "contributors" {
-  for_each = var.groups
+  for_each = {
+    for k, v in var.groups : k => v
+  }
 
   principal_id         = azuread_group.contributors[each.value.id].object_id
-  scope                = local.contributor_scopes[each.key]
+  scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
   role_definition_name = each.value.contributor_role
 }
 
