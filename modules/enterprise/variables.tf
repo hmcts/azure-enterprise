@@ -27,7 +27,3 @@ variable "platform_operations" {
   type        = string
 }
 
-variable "pim_approvers" {
-  description = "Object ID of the PIM Approvers group"
-  type        = string
-}
