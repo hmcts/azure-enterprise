@@ -9,7 +9,6 @@ module "enterprise" {
   create_custom_roles = var.create_custom_roles
 
   platform_operations = var.platform_operations
-  pim_approvers       = var.pim_approvers
 
   management_groups = {
     HMCTS = {
