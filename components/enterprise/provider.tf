@@ -13,7 +13,7 @@ terraform {
       source = "microsoft/azuredevops"
     }
   }
-  backend "azurerm" {}
+  # backend "azurerm" {}
 }
 
 provider "azurerm" {

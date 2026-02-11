@@ -1,10 +1,3 @@
-# Roles to assign to the active global admin group
-locals {
-  global_admin_roles = [
-    "Owner"
-  ]
-}
-
 # Eligible Global Administrator Group
 resource "azuread_group" "global_admin_eligible" {
   display_name            = "DTS Global Admins Eligible"
