@@ -105,20 +105,20 @@ variable "expiresAfter" {
   default     = "3000-01-01"
 }
 
-# variable "create_custom_roles" {
-#   default     = false
-#   description = "Should this component create any custom roles defined in the enterprise module"
-# }
+variable "create_custom_roles" {
+  default     = false
+  description = "Should this component create any custom roles defined in the enterprise module"
+}
 
-# variable "contributor_role" {
-#   type    = string
-#   default = "Contributor"
-# }
+variable "contributor_role" {
+  type    = string
+  default = "Contributor"
+}
 
-# variable "platform_operations" {
-#   description = "Object ID of the Platform Operations group"
-#   type        = string
-# }
+variable "platform_operations" {
+  description = "Object ID of the Platform Operations group"
+  type        = string
+}
 
 variable "pim_approvers" {
   description = "Object ID of the PIM Approvers group"
