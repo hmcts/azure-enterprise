@@ -161,7 +161,7 @@ heritage_non_production_subscriptions = {
   DTS-HERITAGE-INTSVC-DEV = {
     environment = "dev"
   }
-    DTS-HERITAGE-INTSVC-SIT = {
+  DTS-HERITAGE-INTSVC-SIT = {
     environment = "sit"
   }
 }
