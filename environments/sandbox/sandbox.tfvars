@@ -34,4 +34,3 @@ enrollment_account_name = "322108"
 create_custom_roles = true
 
 platform_operations = "9b200a9c-8c0b-497a-9246-2c9b4dcc0d02"
-pim_approvers       = "3e1fcd71-06ff-4531-a2fa-db6468830fda"
