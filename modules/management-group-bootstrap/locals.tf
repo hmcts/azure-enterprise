@@ -9,3 +9,4 @@ locals {
   is_prod_environment    = var.env == "prod"
 
   
+}
