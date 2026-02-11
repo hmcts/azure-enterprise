@@ -1,3 +1,10 @@
+locals {
+  contributor_scopes = {
+    for name, details in var.groups :
+    name => "/providers/Microsoft.Management/managementGroups/${details.id}"
+  }
+}
+
 resource "azuread_group" "contributors" {
   for_each = var.groups
 
@@ -7,23 +14,10 @@ resource "azuread_group" "contributors" {
 }
 
 resource "azurerm_role_assignment" "contributors" {
-  for_each = {
-    for k, v in var.groups : k => v
-  }
+  for_each = var.groups
 
   principal_id         = azuread_group.contributors[each.value.id].object_id
-  scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
+  scope                = local.contributor_scopes[each.key]
   role_definition_name = each.value.contributor_role
 }
 
-# Assign Contributor role to PIM Approvers group at Prod level for emergency access
-resource "azurerm_role_assignment" "pim_approvers_contributor" {
-  for_each = {
-    for k, v in var.groups : k => v
-    if v.contributor_role != "Contributor"
-  }
-
-  principal_id         = var.pim_approvers
-  scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
-  role_definition_name = "Contributor"
-}
