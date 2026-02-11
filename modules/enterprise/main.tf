@@ -13,7 +13,6 @@ module "bootstrap" {
   custom_roles        = var.create_custom_roles == true ? azurerm_role_definition.custom_role_definitions : data.azurerm_role_definition.custom_role_definitions
   env                 = var.env
   platform_operations = var.platform_operations
-  pim_approvers       = var.pim_approvers
   root_parent_id      = var.root_parent_id
   depends_on          = [azurerm_management_group.level_6]
 }
