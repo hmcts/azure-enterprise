@@ -8,5 +8,5 @@ locals {
   is_sandbox_environment = var.env == "sandbox"
   is_prod_environment    = var.env == "prod"
 
-  
+
 }
