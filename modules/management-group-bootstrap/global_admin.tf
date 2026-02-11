@@ -14,11 +14,3 @@ resource "azuread_group" "global_admin" {
   security_enabled        = true
 }
 
-# Assign roles to the active group
-resource "azurerm_role_assignment" "global_admin_roles" {
-  for_each = toset(local.global_admin_roles)
-
-  principal_id         = azuread_group.global_admin.object_id
-  scope                = "/providers/Microsoft.Management/managementGroups/${var.root_parent_id}"
-  role_definition_name = each.value
-}
