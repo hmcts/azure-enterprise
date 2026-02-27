@@ -36,6 +36,7 @@ parameters:
         environment: 'sandbox'
         component: 'enterprise'
         service_connection: 'GA-development-tenant'
+        backend_service_connection: 'GA-development-tenant'
         init_subscription: '55922b0d-5c33-467f-91b9-42c4059d310c'
         dependsOn: 'Precheck'
       - stage: 'prod_enterprise'
@@ -106,6 +107,7 @@ stages:
                   environment: ${{ deployment.environment }}
                   component: ${{ deployment.component }}
                   serviceConnection: ${{ deployment.service_connection }}
+                  backendServiceConnection: ${{ deployment.backend_service_connection }}
                   terraformInitSubscription: ${{ deployment.init_subscription }}
                   product: ${{ variables.product }}
                   terraformEnvironmentVariables:
