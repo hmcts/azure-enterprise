@@ -48,6 +48,10 @@ cft_production_subscriptions = {
   DTS-CFTPTL-INTSVC = {
     deploy_acme = true
     environment = "ptl"
+    additional_readers = [
+      "ef97b2f2-69c1-4692-8424-40f973d9d227", # DTS Bootstrap (sub:dcd-cftapps-dev)
+      "5560d892-9d16-43d8-8d76-c0d6a70fb39a", # DTS Bootstrap (sub:dcd-cftapps-prod)
+    ]
   }
   DTS-CFTSBOX-INTSVC = {
     deploy_acme = true

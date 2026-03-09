@@ -12,6 +12,7 @@ module "subscription" {
   deploy_acme                = try(each.value.deploy_acme, false)
   replication_type           = try(each.value.replication_type, "ZRS")
   additional_api_permissions = try(each.value.additional_api_permissions, {})
+  additional_readers         = try(each.value.additional_readers, [])
 }
 
 module "custom_role_assignments" {

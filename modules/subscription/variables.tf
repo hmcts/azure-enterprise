@@ -90,3 +90,9 @@ variable "notes" {
   description = "User defined Notes for the service principal"
   default     = "This service principal created by hmcts/azure-enterprise repository"
 }
+
+variable "additional_readers" {
+  type        = list(string)
+  description = "Additional principal IDs to add to the Reader group"
+  default     = []
+}
