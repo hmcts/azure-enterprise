@@ -32,3 +32,9 @@ resource "azuread_group_member" "dts_operation_members" {
   group_object_id  = data.azuread_group.dts_operations.object_id
   member_object_id = azuread_service_principal.sp.object_id
 }
+
+resource "azuread_group_member" "additional_readers" {
+  for_each         = toset(var.additional_readers)
+  group_object_id  = azuread_group.groups["Reader"].object_id
+  member_object_id = each.value
+}
