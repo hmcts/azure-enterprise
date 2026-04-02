@@ -13,7 +13,6 @@ HMCTS:::mg --> CFT:::mg
 HMCTS:::mg --> Heritage:::mg
 HMCTS:::mg --> Platform:::mg
 HMCTS:::mg --> SDS:::mg
-HMCTS:::mg --> SPS:::mg
 SDS --> SDS-Sandbox:::mg
 SDS --> SDS-Prod:::mg
 SDS --> SDS-NonProd:::mg
@@ -36,12 +35,6 @@ Crime:::mg --> Crime1[CRIME-ADO-POC] --- Crime2[MoJ Common Platform Non-Live Man
 Heritage-Sandbox:::mg --> DTS-DATAINGEST-SBOX
 Heritage-NonProd:::mg --> DTS-DATAINGEST-STG --- DTS-HERITAGE-EXTSVC-STG --- DTS-HERITAGE-INTSVC-STG --- DTS-HERITAGE-INTSVC-DEV --- DTS-HERITAGE-INTSVC-SIT
 Heritage-Prod:::mg --> DTS-DATAINGEST-PROD --- DTS-HERITAGE-EXTSVC-PROD --- DTS-HERITAGE-INTSVC-PROD
-SPS --> SPS-Sandbox:::mg
-SPS --> SPS-Prod:::mg
-SPS --> SPS-NonProd:::mg
-SPS-Sandbox:::mg --> DTS-SPS-SBOX
-SPS-NonProd:::mg --> DTS-SPS-DEMO --- DTS-SPS-ITHC --- DTS-SPS-PERFTEST --- DTS-SPS-PREVIEW
-SPS-Prod:::mg --> DTS-SPS-STG --- DTS-SPS-PROD
 Security:::mg --> HMCTS-SOC-SBOX --- HMCTS-SOC-PROD
 Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX-INTSVC --- HMCTS-HUB-SBOX-INTSVC --- DTS-DACS-SBOX --- CP-COPILOT-BETA
 Platform-NonProd:::mg --> DTS-MANAGEMENT-NONPROD-INTSVC --- HMCTS-HUB-NONPROD-INTSVC --- DCD-RDO-Development
