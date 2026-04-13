@@ -50,6 +50,7 @@ cft_production_subscriptions = {
     environment = "ptl"
     additional_readers = [
       "933c1e6e-7915-4ac9-aee2-f0a67ba626ae", # DTS Bootstrap (sub:dcd-cftapps-dev)
+      "c822a60c-d948-46f2-a4ce-b1c7ecd33f2f", # DTS Bootstrap (sub:dcd-cftapps-stg)
       "98053eb3-8523-4c5a-96d3-c15532f87c19", # DTS Bootstrap (sub:dcd-cftapps-prod)
     ]
   }
