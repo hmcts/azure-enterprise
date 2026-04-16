@@ -38,7 +38,7 @@ Heritage-Prod:::mg --> DTS-DATAINGEST-PROD --- DTS-HERITAGE-EXTSVC-PROD --- DTS-
 Security:::mg --> HMCTS-SOC-SBOX --- HMCTS-SOC-PROD
 Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX-INTSVC --- HMCTS-HUB-SBOX-INTSVC --- DTS-DACS-SBOX --- CP-COPILOT-BETA
 Platform-NonProd:::mg --> DTS-MANAGEMENT-NONPROD-INTSVC --- HMCTS-HUB-NONPROD-INTSVC --- DCD-RDO-Development
-Platform-Prod:::mg --> HMCTS-CONTROL --- DTS-MANAGEMENT-PROD-INTSVC --- HMCTS-HUB-PROD-INTSVC --- Reform-CFT-Mgmt --- DCD-RDO-Production
+Platform-Prod:::mg --> HMCTS-CONTROL --- DTS-MANAGEMENT-PROD-INTSVC --- HMCTS-HUB-PROD-INTSVC --- Reform-CFT-Mgmt --- DCD-RDO-Production --- DTS-INNOVATION-PROD
 ```
 
 ## Diagram setup
