@@ -246,6 +246,10 @@ platform_production_subscriptions = {
     environment = "prod"
     product     = "mgmt"
   }
+  DTS-INNOVATION-PROD = {
+    environment = "prod"
+    product     = "innovation"
+  }
 }
 
 vh_subscriptions = {}
