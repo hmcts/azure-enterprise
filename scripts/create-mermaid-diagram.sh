@@ -56,7 +56,7 @@ $sed_command -i 's/_sandbox/-Sandbox/g' /tmp/prod.json
 $sed_command -i 's/_non_production/-NonProd/g' /tmp/prod.json
 $sed_command -i 's/_production/-Prod/g' /tmp/prod.json
 $sed_command -i 's/\b\(.\)/\u\1/g' /tmp/prod.json
-$sed_command -i 's/Cft/CFT/g; s/Sds/SDS/g; s/Vh/VH/g' /tmp/prod.json
+$sed_command -i 's/Cft/CFT/g; s/Sds/SDS/g; s/Sps/SPS/g; s/Vh/VH/g' /tmp/prod.json
 
 # Group subscriptions by their full management group name (including environment)
 # and preserve the order from the original file
@@ -89,9 +89,10 @@ END {
     echo 'HMCTS:::mg --> Heritage:::mg'
     echo 'HMCTS:::mg --> Platform:::mg'
     echo 'HMCTS:::mg --> SDS:::mg'
+    echo 'HMCTS:::mg --> SPS:::mg'
 
     # Add environment level relationships
-    for base in SDS Platform Heritage CFT; do
+    for base in SPS SDS Platform Heritage CFT; do
         echo "$base --> $base-Sandbox:::mg"
         echo "$base --> $base-Prod:::mg"
         echo "$base --> $base-NonProd:::mg"

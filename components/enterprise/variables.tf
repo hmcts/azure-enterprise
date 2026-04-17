@@ -69,6 +69,20 @@ variable "platform_production_subscriptions" {
   default = {}
 }
 
+#SPS
+variable "sps_subscriptions" {
+  default = {}
+}
+variable "sps_sandbox_subscriptions" {
+  default = {}
+}
+variable "sps_non_production_subscriptions" {
+  default = {}
+}
+variable "sps_production_subscriptions" {
+  default = {}
+}
+
 variable "billing_account_name" {
   default = "59232335"
 }
