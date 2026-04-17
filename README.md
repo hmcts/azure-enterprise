@@ -114,7 +114,7 @@ Create a 'help request' in the [#platops-help](https://hmcts-reform.slack.com/ap
    * an empty group would be `contoso_subscriptions = {}`
 3. Add your new management group to [enterprise.tf](https://github.com/hmcts/azure-enterprise/blob/main/components/enterprise/enterprise.tf)
 4. Ensure you update the `subscription.group` field to a key that represents your management group, e.g. `crime_non_production`
-5. Add your new management group to [subscriptions.tf](https://github.com/hmcts/azure-enterprise/blob/main/components/enterprise/subscriptions.tf)
+5. Add your new management group to [locals.tf](https://github.com/hmcts/azure-enterprise/blob/main/components/enterprise/locals.tf)
    - make sure you add a new `local` variable for the management group and modify the `local.subscriptions` variable to add the new local you created
 6. Update the [create-mermaid-diagram script](scripts/create-mermaid-diagram.sh) to add your new management group:
    - append the top level of your new management group to the sed command on [L34](scripts/create-mermaid-diagram.sh#L34) `s/vh_subscriptions/VH:::mg/g; s/new_subscriptions/NEW:::mg/g'`

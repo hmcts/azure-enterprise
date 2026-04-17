@@ -252,6 +252,38 @@ platform_production_subscriptions = {
   }
 }
 
+#SPS
+sps_production_subscriptions = {
+  DTS-SPS-STG = {
+    deploy_acme = true
+  }
+  DTS-SPS-PROD = {
+    deploy_acme = true
+  }
+}
+
+sps_non_production_subscriptions = {
+  DTS-SPS-DEMO = {
+    deploy_acme = true
+  }
+  DTS-SPS-ITHC = {
+    deploy_acme = true
+  }
+  DTS-SPS-PERFTEST = {
+    deploy_acme = true
+  }
+  DTS-SPS-PREVIEW = {
+    deploy_acme = true
+  }
+}
+
+sps_sandbox_subscriptions = {
+  DTS-SPS-SBOX = {
+    deploy_acme = true
+  }
+}
+#SPS End
+
 vh_subscriptions = {}
 
 enrollment_account_name = "233705"
