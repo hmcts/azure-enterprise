@@ -256,30 +256,37 @@ platform_production_subscriptions = {
 sps_production_subscriptions = {
   DTS-SPS-STG = {
     deploy_acme = true
+    product     = "sps"
   }
   DTS-SPS-PROD = {
     deploy_acme = true
+    product     = "sps"
   }
 }
 
 sps_non_production_subscriptions = {
   DTS-SPS-DEMO = {
     deploy_acme = true
+    product     = "sps"
   }
   DTS-SPS-ITHC = {
     deploy_acme = true
+    product     = "sps"
   }
   DTS-SPS-PERFTEST = {
     deploy_acme = true
+    product     = "sps"
   }
   DTS-SPS-PREVIEW = {
     deploy_acme = true
+    product     = "sps"
   }
 }
 
 sps_sandbox_subscriptions = {
   DTS-SPS-SBOX = {
     deploy_acme = true
+    product     = "sps"
   }
 }
 #SPS End
