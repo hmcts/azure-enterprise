@@ -216,6 +216,7 @@ platform_non_production_subscriptions = {
   }
   HMCTS-HUB-NONPROD-INTSVC = {
     environment = "stg"
+    deploy_acme = true
     product     = "hub"
   }
   DCD-RDO-Development = {
