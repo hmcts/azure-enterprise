@@ -9,10 +9,10 @@ locals {
   sds_non_production = { for k, v in var.sds_non_production_subscriptions : k => merge(tomap({ group = "sds_non_production" }), v) }
   sds_production     = { for k, v in var.sds_production_subscriptions : k => merge(tomap({ group = "sds_production" }), v) }
 
-  sps                = { for k, v in var.sds_subscriptions : k => merge(tomap({ group = "sps" }), v) }
-  sps_sandbox        = { for k, v in var.sds_sandbox_subscriptions : k => merge(tomap({ group = "sps_sandbox" }), v) }
-  sps_non_production = { for k, v in var.sds_non_production_subscriptions : k => merge(tomap({ group = "sps_non_production" }), v) }
-  sps_production     = { for k, v in var.sds_production_subscriptions : k => merge(tomap({ group = "sps_production" }), v) }
+  sps                = { for k, v in var.sps_subscriptions : k => merge(tomap({ group = "sps" }), v) }
+  sps_sandbox        = { for k, v in var.sps_sandbox_subscriptions : k => merge(tomap({ group = "sps_sandbox" }), v) }
+  sps_non_production = { for k, v in var.sps_non_production_subscriptions : k => merge(tomap({ group = "sps_non_production" }), v) }
+  sps_production     = { for k, v in var.sps_production_subscriptions : k => merge(tomap({ group = "sps_production" }), v) }
 
   crime = { for k, v in var.crime_subscriptions : k => merge(tomap({ group = "crime" }), v) }
 
