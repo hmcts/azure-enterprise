@@ -275,6 +275,7 @@ sps_non_production_subscriptions = {
     product     = "sps"
   }
   DTS-SPS-PERFTEST = {
+    environment = "test"
     deploy_acme = true
     product     = "sps"
   }
