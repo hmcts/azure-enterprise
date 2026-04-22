@@ -138,5 +138,31 @@ module "enterprise" {
       subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "platform_production"]
       contributor_role           = var.contributor_role
     }
+
+    # SPS
+    SPS = {
+      display_name               = "SPS"
+      parent_management_group_id = "HMCTS"
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sps"]
+      contributor_role           = var.contributor_role
+    }
+    SPS-Sandbox = {
+      display_name               = "SPS - Sandbox"
+      parent_management_group_id = "SPS"
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sps_sandbox"]
+      contributor_role           = "Contributor"
+    }
+    SPS-NonProd = {
+      display_name               = "SPS - Non-production"
+      parent_management_group_id = "SPS"
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sps_non_production"]
+      contributor_role           = "Contributor"
+    }
+    SPS-Prod = {
+      display_name               = "SPS - Production"
+      parent_management_group_id = "SPS"
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sps_production"]
+      contributor_role           = var.contributor_role
+    }
   }
 }
