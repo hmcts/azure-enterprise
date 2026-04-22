@@ -280,6 +280,7 @@ sps_non_production_subscriptions = {
     product     = "sps"
   }
   DTS-SPS-PREVIEW = {
+    environment = "dev"
     deploy_acme = true
     product     = "sps"
   }
