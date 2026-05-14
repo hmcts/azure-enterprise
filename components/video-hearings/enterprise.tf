@@ -4,8 +4,10 @@ module "enterprise" {
   root_id        = var.root_id
   root_name      = var.root_name
   root_parent_id = data.azurerm_client_config.core.tenant_id
-
+  env            = var.env
   create_custom_roles = var.create_custom_roles
+  platform_operations = var.platform_operations
+  pim_approvers       = var.pim_approvers
 
   management_groups = {
     HMCTS = {
