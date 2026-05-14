@@ -11,15 +11,27 @@ cft_sandbox_subscriptions = {
 cft_non_production_subscriptions = {
   DCD-CFTAPPS-DEMO = {
     deploy_acme = true
+    additional_user_access_administrators = [
+      "1708cfd4-75b3-44a3-943b-4526840772c2",
+    ]
   }
   DCD-CFTAPPS-DEV = {
     deploy_acme = true
+    additional_user_access_administrators = [
+      "1708cfd4-75b3-44a3-943b-4526840772c2",
+    ]
   }
   DCD-CFTAPPS-ITHC = {
     deploy_acme = true
+    additional_user_access_administrators = [
+      "1708cfd4-75b3-44a3-943b-4526840772c2",
+    ]
   }
   DCD-CFTAPPS-TEST = {
     deploy_acme = true
+    additional_user_access_administrators = [
+      "1708cfd4-75b3-44a3-943b-4526840772c2",
+    ]
   }
   DCD-CFTAPPSDATA-DEMO = {
     deploy_acme = true

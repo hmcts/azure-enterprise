@@ -96,3 +96,10 @@ variable "additional_readers" {
   description = "Additional principal IDs to add to the Reader group"
   default     = []
 }
+
+variable "additional_user_access_administrators" {
+  type        = list(string)
+  description = "Additional principal object IDs to assign User Access Administrator at subscription scope"
+  default     = []
+}
+
