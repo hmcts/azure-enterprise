@@ -76,30 +76,50 @@ locals {
     }
     }
   ]...)
-  role_assignments = {
+  base_role_assignments = {
     "Key Vault Contributor" = {
-      principal_id = azuread_group.groups["Contributor"].object_id
-      scope        = azurerm_key_vault.kv.id
+      role_definition_name = "Key Vault Contributor"
+      principal_id         = azuread_group.groups["Contributor"].object_id
+      scope                = azurerm_key_vault.kv.id
     }
     "Monitoring Contributor" = {
-      principal_id = data.azuread_group.ops_mgmt.object_id
-      scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
+      role_definition_name = "Monitoring Contributor"
+      principal_id         = data.azuread_group.ops_mgmt.object_id
+      scope                = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
     "Network Contributor" = {
-      principal_id = data.azuread_group.ops_mgmt.object_id
-      scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
+      role_definition_name = "Network Contributor"
+      principal_id         = data.azuread_group.ops_mgmt.object_id
+      scope                = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
     "Storage Account Contributor" = {
-      principal_id = azuread_group.groups["Contributor"].object_id
-      scope        = azurerm_storage_account.sa.id
+      role_definition_name = "Storage Account Contributor"
+      principal_id         = azuread_group.groups["Contributor"].object_id
+      scope                = azurerm_storage_account.sa.id
     }
     "Storage Blob Data Contributor" = {
-      principal_id = azuread_group.groups["Contributor"].object_id
-      scope        = azurerm_storage_account.sa.id
+      role_definition_name = "Storage Blob Data Contributor"
+      principal_id         = azuread_group.groups["Contributor"].object_id
+      scope                = azurerm_storage_account.sa.id
     }
     "User Access Administrator" = {
-      principal_id = data.azuread_group.dts_operations.object_id
-      scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
+      role_definition_name = "User Access Administrator"
+      principal_id         = data.azuread_group.dts_operations.object_id
+      scope                = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
   }
+
+  additional_user_access_administrator_role_assignments = {
+    for principal_id in var.additional_user_access_administrators :
+    "User Access Administrator ${principal_id}" => {
+      role_definition_name = "User Access Administrator"
+      principal_id         = principal_id
+      scope                = "/subscriptions/${azurerm_subscription.this.subscription_id}"
+    }
+  }
+
+  role_assignments = merge(
+    local.base_role_assignments,
+    local.additional_user_access_administrator_role_assignments,
+  )
 }
