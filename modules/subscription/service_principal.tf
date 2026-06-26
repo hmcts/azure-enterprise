@@ -72,6 +72,7 @@ resource "azuread_application_api_access" "privilege_management_graph_perm" {
   application_id = azuread_application.app.id
   api_client_id  = data.azuread_application_published_app_ids.well_known.result["MicrosoftGraph"]
   role_ids = [
+    # these need to be granted in the portal, i think that's consistent with what we already have
     data.azuread_service_principal.app.app_role_ids["EntitlementManagement.Read.All"],
     data.azuread_service_principal.app.app_role_ids["PrivilegedAccess.Read.AzureADGroup"],
     data.azuread_service_principal.app.app_role_ids["GroupMember.Read.All"],

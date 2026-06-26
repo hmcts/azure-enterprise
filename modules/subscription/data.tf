@@ -14,3 +14,6 @@ data "azuread_group" "dts_operations" {
 # for lookups
 data "azuread_application_published_app_ids" "well_known" {}
 
+data "azuread_service_principal" "graph_api_principal" {
+client_id = data.azuread_application_published_app_ids.well_known.result["MicrosoftGraph"]
+}
