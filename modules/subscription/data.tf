@@ -11,4 +11,6 @@ data "azuread_group" "aks_global_admin" {
 data "azuread_group" "dts_operations" {
   display_name = "DTS Operations (env:${var.environment})"
 }
+# for lookups
+data "azuread_application_published_app_ids" "well_known" {}
 
