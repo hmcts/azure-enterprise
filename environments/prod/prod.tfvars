@@ -16,6 +16,7 @@ cft_non_production_subscriptions = {
     deploy_acme = true
     additional_readers = [
       "14b22215-46e6-48a9-8681-e8cefe66236a", # jenkins-aat-mi
+      "c860eaa0-74be-4731-8370-db94c5fdad81", # jenkins-prod-mi
     ]
   }
   DCD-CFTAPPS-ITHC = {
@@ -29,6 +30,9 @@ cft_non_production_subscriptions = {
   }
   DCD-CNP-DEV = {
     deploy_acme = true
+    additional_readers = [
+      "c860eaa0-74be-4731-8370-db94c5fdad81", # jenkins-prod-mi
+    ]
   }
   DCD-CNP-QA = {
     deploy_acme = true
@@ -56,6 +60,7 @@ cft_production_subscriptions = {
       "c822a60c-d948-46f2-a4ce-b1c7ecd33f2f", # DTS Bootstrap (sub:dcd-cftapps-stg)
       "98053eb3-8523-4c5a-96d3-c15532f87c19", # DTS Bootstrap (sub:dcd-cftapps-prod)
       "14b22215-46e6-48a9-8681-e8cefe66236a", # jenkins-aat-mi
+      "c860eaa0-74be-4731-8370-db94c5fdad81", # jenkins-prod-mi
     ]
   }
   DTS-CFTSBOX-INTSVC = {
