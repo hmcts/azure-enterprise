@@ -57,28 +57,8 @@ resource "azuread_application" "app" {
     }
   }
 
-  lifecycle { # used to append an extra assignment in a separate block
-    ignore_changes = [
-      required_resource_access,
-    ]
-  }
-
   notes = var.notes
 }
-
-resource "azuread_application_api_access" "privilege_management_graph_perm" {
-  count = local.app_name == "DTS Bootstrap (sub:dts-management-prod-intsvc)" ? 1 : 0
-
-  application_id = azuread_application.app.id
-  api_client_id  = data.azuread_application_published_app_ids.well_known.result["MicrosoftGraph"]
-  role_ids = [
-    # these need to be granted in the portal, i think that's consistent with what we already have
-    data.azuread_service_principal.graph_api_principal.app_role_ids["EntitlementManagement.Read.All"],
-    data.azuread_service_principal.graph_api_principal.app_role_ids["PrivilegedAccess.Read.AzureADGroup"],
-    data.azuread_service_principal.graph_api_principal.app_role_ids["GroupMember.Read.All"],
-  ]
-}
-
 
 resource "azuread_application_password" "token" {
   application_id = azuread_application.app.id
