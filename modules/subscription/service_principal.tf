@@ -18,25 +18,8 @@ resource "azuread_application" "app" {
       value                      = "user_impersonation"
     }
   }
-  required_resource_access {
-    resource_app_id = "00000003-0000-0000-c000-000000000000" # Microsoft Graph
-    resource_access {
-      id   = "06da0dbc-49e2-44d2-8312-53f166ab848a" # Directory.Read.All Delegated
-      type = "Scope"
-    }
-
-    resource_access {
-      id   = "5b567255-7703-4780-807c-7be8301ae99b" # Group.Read.All Application
-      type = "Role"
-    }
-
-    resource_access {
-      id   = "9a5d68dd-52b0-4cc2-bd40-abcf44ac3a30" # Application.Read.All Application
-      type = "Role"
-    }
-  }
   dynamic "required_resource_access" {
-    for_each = var.additional_api_permissions
+    for_each = local.api_permissions
     content {
       resource_app_id = required_resource_access.key
       dynamic "resource_access" {
