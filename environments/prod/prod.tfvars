@@ -253,7 +253,7 @@ platform_production_subscriptions = {
     additional_api_permissions = {
       # Granting audit permissions to the daily check service principal
       # these need to be granted in the portal, i think that's consistent with what we already have
-      "00000003-0000-0000-c000-000000000000" = { # ms graph
+      "00000003-0000-0000-c000-000000000000" = {        # ms graph
         "c74fd47d-ed3c-45c3-9a9e-b8676de685d2" = "Role" # EntitlementManagement.Read.All
         "01e37dc9-c035-40bd-b438-b2879c4870a6" = "Role" # PrivilegedAccess.Read.AzureADGroup
       }
