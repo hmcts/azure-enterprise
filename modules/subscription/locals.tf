@@ -5,7 +5,7 @@ locals {
 
   base_api_permissions = {
     # applied to all service principals
-    "00000003-0000-0000-c000-000000000000" = { # Microsoft Graph
+    "00000003-0000-0000-c000-000000000000" = {         # Microsoft Graph
       "06da0dbc-49e2-44d2-8312-53f166ab848a" = "Scope" # Directory.Read.All Delegated
       "5b567255-7703-4780-807c-7be8301ae99b" = "Role"  # Group.Read.All Application
       "9a5d68dd-52b0-4cc2-bd40-abcf44ac3a30" = "Role"  # Application.Read.All Application
