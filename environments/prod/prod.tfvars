@@ -80,6 +80,10 @@ sds_non_production_subscriptions = {
   }
   DTS-SHAREDSERVICES-DEV = {
     deploy_acme = true
+    additional_readers = [
+      "df14f052-7865-49c6-b6f9-13e123dd8b66", # jenkins-stg-mi
+      "b7167d08-1908-410f-9f0d-ebfb93d248c9", # jenkins-prod-mi
+    ]
     additional_api_permissions = {
       "73c2949e-da2d-457a-9607-fcc665198967" = {
         "817468d0-81dd-4cb5-94ac-07ca133fbbf6" = "Scope"
@@ -119,6 +123,10 @@ sds_production_subscriptions = {
   DTS-SHAREDSERVICESPTL = {
     deploy_acme = true
     environment = "ptl"
+    additional_readers = [
+      "df14f052-7865-49c6-b6f9-13e123dd8b66", # jenkins-stg-mi
+      "b7167d08-1908-410f-9f0d-ebfb93d248c9", # jenkins-prod-mi
+    ]
   }
   DTS-SHAREDSERVICESPTL-SBOX = {
     deploy_acme = true
