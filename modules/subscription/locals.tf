@@ -2,6 +2,27 @@ locals {
   app_name      = "DTS Bootstrap (sub:${lower(azurerm_subscription.this.subscription_name)})"
   acme_app_name = "acme-${lower(azurerm_subscription.this.subscription_name)}"
   acme_uri      = replace(lower(azurerm_subscription.this.subscription_name), "sharedservices", "sds")
+
+  base_api_permissions = {
+    # applied to all service principals
+    "00000003-0000-0000-c000-000000000000" = {         # Microsoft Graph
+      "06da0dbc-49e2-44d2-8312-53f166ab848a" = "Scope" # Directory.Read.All Delegated
+      "5b567255-7703-4780-807c-7be8301ae99b" = "Role"  # Group.Read.All Application
+      "9a5d68dd-52b0-4cc2-bd40-abcf44ac3a30" = "Role"  # Application.Read.All Application
+    }
+  }
+
+  # Deeper merge base perms with per-subscription additions so an existing API
+  # (Graph) is extended rather than producing a duplicate resource_app_id
+  # block (which Azure AD rejects with DuplicateValue / 400).
+  api_permissions = {
+    for app_id in toset(concat(keys(local.base_api_permissions), keys(var.additional_api_permissions))) :
+    app_id => merge(
+      lookup(local.base_api_permissions, app_id, {}),
+      lookup(var.additional_api_permissions, app_id, {}),
+    )
+  }
+
   groups = {
     "Azure Kubernetes Service Cluster Admin Role" = {
       name        = "DTS AKS Administrators (sub:${lower(azurerm_subscription.this.subscription_name)})"
