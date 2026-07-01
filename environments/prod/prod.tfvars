@@ -66,6 +66,9 @@ cft_production_subscriptions = {
   DTS-CFTSBOX-INTSVC = {
     deploy_acme = true
     environment = "ptlsbox"
+    additional_readers = [
+      "e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb", # jenkins-sbox-mi
+    ]
   }
 }
 
@@ -131,6 +134,9 @@ sds_production_subscriptions = {
   DTS-SHAREDSERVICESPTL-SBOX = {
     deploy_acme = true
     environment = "ptlsbox"
+    additional_readers = [
+      "c445bc65-3550-421e-af0e-5ab8e8a06a79", # jenkins-sbox-mi
+    ]
   }
   DTS-ARCHIVING-PROD = {
     environment = "prod"
