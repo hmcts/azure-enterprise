@@ -46,7 +46,7 @@ variable "access_type" {
 variable "purge_protection_enabled" {
   description = "Should we enable Purge Protection on the KeyVault."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "sku_name" {
