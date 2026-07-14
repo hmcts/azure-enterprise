@@ -32,6 +32,8 @@ cft_non_production_subscriptions = {
     deploy_acme = true
     additional_readers = [
       "c860eaa0-74be-4731-8370-db94c5fdad81", # jenkins-prod-mi
+      "22349922-a968-43b8-b5a5-1da0e57504c2", # jenkins-ithc-mi
+      "531d44e7-5fe6-40cb-a390-ae1f36a23878", # jenkins-perftest-mi
     ]
   }
   DCD-CNP-QA = {
