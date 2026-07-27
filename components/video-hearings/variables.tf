@@ -97,6 +97,16 @@ variable "expiresAfter" {
   default     = "3000-01-01"
 }
 
+variable "platform_operations" {
+  description = "Object ID of the Platform Operations group"
+  type        = string
+}
+
+variable "pim_approvers" {
+  description = "Object ID of the PIM Approvers group"
+  type        = string
+}
+
 # Defined here as we have an input in the tfvar file but this variable is not used within this component
 variable "create_custom_roles" {
   default     = true
