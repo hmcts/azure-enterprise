@@ -13,6 +13,7 @@ module "subscription" {
   replication_type           = try(each.value.replication_type, "ZRS")
   additional_api_permissions = try(each.value.additional_api_permissions, {})
   additional_readers         = try(each.value.additional_readers, [])
+  purge_protection_enabled   = try(each.value.purge_protection_enabled, false)
 }
 
 module "custom_role_assignments" {
