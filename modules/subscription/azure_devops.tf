@@ -1,6 +1,7 @@
 resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
   project_id                             = var.project_id
   service_endpoint_name                  = azurerm_subscription.this.subscription_name
+  description                            = "Managed by Terraform - azure-enterprise (https://github.com/hmcts/azure-enterprise)"
   service_endpoint_authentication_scheme = "WorkloadIdentityFederation"
   credentials {
     serviceprincipalid = azuread_service_principal.sp.client_id
