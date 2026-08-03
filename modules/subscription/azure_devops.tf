@@ -12,9 +12,9 @@ resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
 }
 
 resource "azuread_application_federated_identity_credential" "endpoint" {
-  application_id        = azuread_application.app.id
-  display_name          = replace(replace(azurerm_subscription.this.subscription_name, "/", "__"), ":", "_")
-  audiences             = ["api://AzureADTokenExchange"]
-  issuer                = azuredevops_serviceendpoint_azurerm.endpoint.workload_identity_federation_issuer
-  subject               = azuredevops_serviceendpoint_azurerm.endpoint.workload_identity_federation_subject
+  application_id = azuread_application.app.id
+  display_name   = replace(replace(azurerm_subscription.this.subscription_name, "/", "__"), ":", "_")
+  audiences      = ["api://AzureADTokenExchange"]
+  issuer         = azuredevops_serviceendpoint_azurerm.endpoint.workload_identity_federation_issuer
+  subject        = azuredevops_serviceendpoint_azurerm.endpoint.workload_identity_federation_subject
 }

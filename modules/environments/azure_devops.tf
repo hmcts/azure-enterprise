@@ -18,10 +18,10 @@ resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
 }
 
 resource "azuread_application_federated_identity_credential" "endpoint" {
-  count                 = var.add_service_connection_to_ado == true ? 1 : 0
-  application_id        = azuread_application.app.id
-  display_name          = replace(replace("OPS-APPROVAL-GATE-${upper(var.env)}-ENVS", "/", "__"), ":", "_")
-  audiences             = ["api://AzureADTokenExchange"]
-  issuer                = azuredevops_serviceendpoint_azurerm.endpoint[0].workload_identity_federation_issuer
-  subject               = azuredevops_serviceendpoint_azurerm.endpoint[0].workload_identity_federation_subject
+  count          = var.add_service_connection_to_ado == true ? 1 : 0
+  application_id = azuread_application.app.id
+  display_name   = replace(replace("OPS-APPROVAL-GATE-${upper(var.env)}-ENVS", "/", "__"), ":", "_")
+  audiences      = ["api://AzureADTokenExchange"]
+  issuer         = azuredevops_serviceendpoint_azurerm.endpoint[0].workload_identity_federation_issuer
+  subject        = azuredevops_serviceendpoint_azurerm.endpoint[0].workload_identity_federation_subject
 }
