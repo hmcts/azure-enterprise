@@ -1,3 +1,11 @@
+resource "time_rotating" "one_year" {
+  rotation_days = 365
+  # Force rotation by adding a trigger - remove this after rotation completes
+  triggers = {
+    force_rotation = "2025-09-12" # Change this date to force rotation
+  }
+}
+
 resource "random_uuid" "app_uuid" {}
 
 resource "azuread_application" "app" {
@@ -30,6 +38,13 @@ resource "azuread_application" "app" {
     }
   }
   notes = var.notes
+}
+
+resource "azuread_application_password" "token" {
+  application_id = azuread_application.app.id
+  rotate_when_changed = {
+    rotation = time_rotating.one_year.id
+  }
 }
 
 resource "azuread_service_principal" "sp" {
