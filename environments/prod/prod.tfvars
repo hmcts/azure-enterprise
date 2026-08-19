@@ -132,7 +132,10 @@ sds_production_subscriptions = {
     deploy_acme = true
     environment = "ptl"
     additional_readers = [
+      "d4271678-056e-4a35-8388-cbec28e84916", # jenkins-dev-mi
+      "ab5aee91-f489-4532-933b-cbf5077b7020", # jenkins-demo-mi
       "df14f052-7865-49c6-b6f9-13e123dd8b66", # jenkins-stg-mi
+      "f6a4bf80-9fc3-41de-b81f-558d542452ad", # jenkins-test-mi
       "b7167d08-1908-410f-9f0d-ebfb93d248c9", # jenkins-prod-mi
     ]
   }
