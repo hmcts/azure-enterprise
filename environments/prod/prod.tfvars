@@ -4,7 +4,8 @@ cft_sandbox_subscriptions = {
     deploy_acme = true
   }
   DCD-CFTAPPS-SBOX = {
-    deploy_acme = true
+    deploy_acme                = true
+    add_bootstrap_to_aks_admin = true
   }
   DCD-ROBOTICS-SBOX = {}
 }
