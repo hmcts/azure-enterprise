@@ -12,9 +12,11 @@ cft_sandbox_subscriptions = {
 cft_non_production_subscriptions = {
   DCD-CFTAPPS-DEMO = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
   DCD-CFTAPPS-DEV = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
     additional_readers = [
       "14b22215-46e6-48a9-8681-e8cefe66236a", # jenkins-aat-mi
       "c860eaa0-74be-4731-8370-db94c5fdad81", # jenkins-prod-mi
@@ -22,9 +24,11 @@ cft_non_production_subscriptions = {
   }
   DCD-CFTAPPS-ITHC = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
   DCD-CFTAPPS-TEST = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
   DCD-CFTAPPSDATA-DEMO = {
     deploy_acme = true
@@ -48,9 +52,11 @@ cft_non_production_subscriptions = {
 cft_production_subscriptions = {
   DCD-CFTAPPS-PROD = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
   DCD-CFTAPPS-STG = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
   DCD-CNP-Prod = {
     deploy_acme = true
@@ -81,14 +87,17 @@ cft_production_subscriptions = {
 sds_sandbox_subscriptions = {
   DTS-SHAREDSERVICES-SBOX = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
 }
 sds_non_production_subscriptions = {
   DTS-SHAREDSERVICES-DEMO = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
   DTS-SHAREDSERVICES-DEV = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
     additional_readers = [
       "df14f052-7865-49c6-b6f9-13e123dd8b66", # jenkins-stg-mi
       "b7167d08-1908-410f-9f0d-ebfb93d248c9", # jenkins-prod-mi
@@ -101,9 +110,11 @@ sds_non_production_subscriptions = {
   }
   DTS-SHAREDSERVICES-ITHC = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
   DTS-SHAREDSERVICES-TEST = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
   DTS-ARCHIVING-TEST = {
     environment = "test"
@@ -113,9 +124,11 @@ sds_non_production_subscriptions = {
 sds_production_subscriptions = {
   DTS-SHAREDSERVICES-STG = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
   }
   DTS-SHAREDSERVICES-PROD = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
     additional_api_permissions = {
       "73c2949e-da2d-457a-9607-fcc665198967" = {
         "817468d0-81dd-4cb5-94ac-07ca133fbbf6" = "Scope"
@@ -131,6 +144,7 @@ sds_production_subscriptions = {
   }
   DTS-SHAREDSERVICESPTL = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
     environment = "ptl"
     additional_readers = [
       "df14f052-7865-49c6-b6f9-13e123dd8b66", # jenkins-stg-mi
@@ -139,6 +153,7 @@ sds_production_subscriptions = {
   }
   DTS-SHAREDSERVICESPTL-SBOX = {
     deploy_acme = true
+    add_bootstrap_to_aks_admin = true
     environment = "ptlsbox"
     additional_readers = [
       "c445bc65-3550-421e-af0e-5ab8e8a06a79", # jenkins-sbox-mi
@@ -148,7 +163,8 @@ sds_production_subscriptions = {
     environment = "prod"
     product     = "arm"
   }
-}
+}az ad group show --group a61704af-0d13-49ce-9ec7-2ad4f5bad9b5 --query displayName -o tsv
+az ad sp show --id 173fde48-bd6b-44f1-bb63-6fe6c90424ca --query displayName -o tsv
 
 crime_subscriptions = {
   CRIME-ADO-POC = {
