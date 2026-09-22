@@ -163,8 +163,7 @@ sds_production_subscriptions = {
     environment = "prod"
     product     = "arm"
   }
-}az ad group show --group a61704af-0d13-49ce-9ec7-2ad4f5bad9b5 --query displayName -o tsv
-az ad sp show --id 173fde48-bd6b-44f1-bb63-6fe6c90424ca --query displayName -o tsv
+}
 
 crime_subscriptions = {
   CRIME-ADO-POC = {
