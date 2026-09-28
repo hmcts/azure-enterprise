@@ -279,6 +279,17 @@ platform_production_subscriptions = {
   Reform-CFT-Mgmt = {
     environment = "mgmt"
     product     = "mgmt"
+    additional_readers = [
+      "933c1e6e-7915-4ac9-aee2-f0a67ba626ae", # DTS Bootstrap (sub:dcd-cftapps-dev)
+      "c822a60c-d948-46f2-a4ce-b1c7ecd33f2f", # DTS Bootstrap (sub:dcd-cftapps-stg)
+      "98053eb3-8523-4c5a-96d3-c15532f87c19", # DTS Bootstrap (sub:dcd-cftapps-prod)
+      "14b22215-46e6-48a9-8681-e8cefe66236a", # jenkins-aat-mi
+      "75141362-5195-42fb-83f1-69225bb5250b", # jenkins-demo-mi
+      "22349922-a968-43b8-b5a5-1da0e57504c2", # jenkins-ithc-mi
+      "531d44e7-5fe6-40cb-a390-ae1f36a23878", # jenkins-perftest-mi
+      "c860eaa0-74be-4731-8370-db94c5fdad81", # jenkins-prod-mi
+      "e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb", # jenkins-sbox-mi
+    ]
   }
   DCD-RDO-Production = {
     environment = "prod"
