@@ -103,6 +103,12 @@ variable "additional_aks_admins" {
   default     = []
 }
 
+variable "enable_additional_aks_admins" {
+  type        = bool
+  description = "Optional flag for adding additional_aks_admins to the subscription aks admin group"
+  default     = false
+}
+
 variable "add_bootstrap_to_aks_admin" {
   type        = bool
   description = "Optional flag for attaching bootstrap service principal to relevant subscription aks admin group"

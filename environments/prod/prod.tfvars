@@ -86,9 +86,10 @@ cft_production_subscriptions = {
 
 sds_sandbox_subscriptions = {
   DTS-SHAREDSERVICES-SBOX = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb"] # jenkins-sbox-mi
+    deploy_acme                  = true
+    add_bootstrap_to_aks_admin   = true
+    enable_additional_aks_admins = true
+    additional_aks_admins        = ["e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb"] # jenkins-sbox-mi
   }
 }
 sds_non_production_subscriptions = {
