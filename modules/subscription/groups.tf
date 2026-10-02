@@ -40,7 +40,7 @@ resource "azuread_group_member" "additional_readers" {
 }
 
 resource "azuread_group_member" "additional_aks_admins" {
-  for_each         = var.enable_additional_aks_admins ? toset(var.additional_aks_admins) : toset([])
+  for_each         = toset(var.additional_aks_admins)
   group_object_id  = azuread_group.groups["Azure Kubernetes Service Cluster Admin Role"].object_id
   member_object_id = each.value
 }
