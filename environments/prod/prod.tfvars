@@ -2,6 +2,7 @@ cft_sandbox_subscriptions = {
   DCD-CFT-Sandbox = {
     environment = "sbox"
     deploy_acme = true
+    additional_aks_admins = ["e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb"]
   }
   DCD-CFTAPPS-SBOX = {
     deploy_acme                = true
@@ -40,10 +41,19 @@ cft_non_production_subscriptions = {
       "22349922-a968-43b8-b5a5-1da0e57504c2", # jenkins-ithc-mi
       "531d44e7-5fe6-40cb-a390-ae1f36a23878", # jenkins-perftest-mi
     ]
+    additional_aks_admins = [
+      "14b22215-46e6-48a9-8681-e8cefe66236a",
+      "75141362-5195-42fb-83f1-69225bb5250b",
+      "a289f989-29fd-46c0-a590-d4bb2be50d39",
+    ]
   }
   DCD-CNP-QA = {
     deploy_acme = true
     environment = "test"
+    additional_aks_admins = [
+      "22349922-a968-43b8-b5a5-1da0e57504c2",
+      "531d44e7-5fe6-40cb-a390-ae1f36a23878",
+    ]
   }
   DCD-ROBOTICS-DEV = {
     environment = "dev"
@@ -60,6 +70,7 @@ cft_production_subscriptions = {
   }
   DCD-CNP-Prod = {
     deploy_acme = true
+    additional_aks_admins = ["c860eaa0-74be-4731-8370-db94c5fdad81"]
   }
   DTS-CFTPTL-INTSVC = {
     deploy_acme = true
@@ -73,6 +84,10 @@ cft_production_subscriptions = {
       "22349922-a968-43b8-b5a5-1da0e57504c2", # jenkins-ithc-mi
       "531d44e7-5fe6-40cb-a390-ae1f36a23878", # jenkins-perftest-mi
       "c860eaa0-74be-4731-8370-db94c5fdad81", # jenkins-prod-mi
+    ]
+    additional_aks_admins = [
+      "ca6d5085-485a-417d-8480-c3cefa29df31",
+      "0292f26e-288e-4f5b-85fc-b99a53f0a2b1",
     ]
   }
   DTS-CFTSBOX-INTSVC = {
@@ -88,13 +103,14 @@ sds_sandbox_subscriptions = {
   DTS-SHAREDSERVICES-SBOX = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb"] # jenkins-sbox-mi
+    additional_aks_admins      = ["c445bc65-3550-421e-af0e-5ab8e8a06a79"] # jenkins-sbox-mi
   }
 }
 sds_non_production_subscriptions = {
   DTS-SHAREDSERVICES-DEMO = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
+    additional_aks_admins = ["ab5aee91-f489-4532-933b-cbf5077b7020"]
   }
   DTS-SHAREDSERVICES-DEV = {
     deploy_acme                = true
@@ -108,14 +124,17 @@ sds_non_production_subscriptions = {
         "817468d0-81dd-4cb5-94ac-07ca133fbbf6" = "Scope"
       }
     }
+    additional_aks_admins = ["d4271678-056e-4a35-8388-cbec28e84916"]
   }
   DTS-SHAREDSERVICES-ITHC = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
+    additional_aks_admins = ["abd08e6b-a3f9-4e29-aa71-60937b7cc66f"]
   }
   DTS-SHAREDSERVICES-TEST = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
+    additional_aks_admins = ["f6a4bf80-9fc3-41de-b81f-558d542452ad"]
   }
   DTS-ARCHIVING-TEST = {
     environment = "test"
@@ -126,6 +145,7 @@ sds_production_subscriptions = {
   DTS-SHAREDSERVICES-STG = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
+    additional_aks_admins = ["df14f052-7865-49c6-b6f9-13e123dd8b66"]
   }
   DTS-SHAREDSERVICES-PROD = {
     deploy_acme                = true
@@ -135,6 +155,7 @@ sds_production_subscriptions = {
         "817468d0-81dd-4cb5-94ac-07ca133fbbf6" = "Scope"
       }
     }
+    additional_aks_admins = ["b7167d08-1908-410f-9f0d-ebfb93d248c9"]
   }
   DCD-AWS-Migration = {
     environment = "prod"
@@ -151,6 +172,7 @@ sds_production_subscriptions = {
       "df14f052-7865-49c6-b6f9-13e123dd8b66", # jenkins-stg-mi
       "b7167d08-1908-410f-9f0d-ebfb93d248c9", # jenkins-prod-mi
     ]
+    additional_aks_admins = ["7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01"]
   }
   DTS-SHAREDSERVICESPTL-SBOX = {
     deploy_acme                = true
@@ -158,6 +180,10 @@ sds_production_subscriptions = {
     environment                = "ptlsbox"
     additional_readers = [
       "c445bc65-3550-421e-af0e-5ab8e8a06a79", # jenkins-sbox-mi
+    ]
+    additional_aks_admins = [
+      "446d9962-16af-444c-b72e-ce0f5a99999e",
+      "5356a0e7-324e-4efa-970b-4b4aec3f0ba3",
     ]
   }
   DTS-ARCHIVING-PROD = {
