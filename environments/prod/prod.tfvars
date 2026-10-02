@@ -6,7 +6,7 @@ cft_sandbox_subscriptions = {
   DCD-CFTAPPS-SBOX = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb"]
+    additional_aks_admins      = ["e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb"]
   }
   DCD-ROBOTICS-SBOX = {}
 }
@@ -14,7 +14,7 @@ cft_non_production_subscriptions = {
   DCD-CFTAPPS-DEMO = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["75141362-5195-42fb-83f1-69225bb5250b"]
+    additional_aks_admins      = ["75141362-5195-42fb-83f1-69225bb5250b"]
   }
   DCD-CFTAPPS-DEV = {
     deploy_acme                = true
@@ -28,12 +28,12 @@ cft_non_production_subscriptions = {
   DCD-CFTAPPS-ITHC = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["22349922-a968-43b8-b5a5-1da0e57504c2"]
+    additional_aks_admins      = ["22349922-a968-43b8-b5a5-1da0e57504c2"]
   }
   DCD-CFTAPPS-TEST = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["531d44e7-5fe6-40cb-a390-ae1f36a23878"]
+    additional_aks_admins      = ["531d44e7-5fe6-40cb-a390-ae1f36a23878"]
   }
   DCD-CFTAPPSDATA-DEMO = {
     deploy_acme = true
@@ -58,12 +58,12 @@ cft_production_subscriptions = {
   DCD-CFTAPPS-PROD = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["c860eaa0-74be-4731-8370-db94c5fdad81"]
+    additional_aks_admins      = ["c860eaa0-74be-4731-8370-db94c5fdad81"]
   }
   DCD-CFTAPPS-STG = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["14b22215-46e6-48a9-8681-e8cefe66236a"]
+    additional_aks_admins      = ["14b22215-46e6-48a9-8681-e8cefe66236a"]
   }
   DCD-CNP-Prod = {
     deploy_acme = true
