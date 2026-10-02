@@ -39,6 +39,12 @@ resource "azuread_group_member" "additional_readers" {
   member_object_id = each.value
 }
 
+resource "azuread_group_member" "additional_aks_admins" {
+  for_each         = toset(var.additional_aks_admins)
+  group_object_id  = azuread_group.groups["Azure Kubernetes Service Cluster Admin Role"].object_id
+  member_object_id = each.value
+}
+
 resource "azuread_group_member" "bootstrap_aks_admin" {
   count            = var.add_bootstrap_to_aks_admin ? 1 : 0
   group_object_id  = azuread_group.groups["Azure Kubernetes Service Cluster Admin Role"].object_id
