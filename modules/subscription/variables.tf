@@ -97,6 +97,12 @@ variable "additional_readers" {
   default     = []
 }
 
+variable "additional_aks_admins" {
+  type        = list(string)
+  description = "Additional principal IDs to add to the AKS Cluster Admin group"
+  default     = []
+}
+
 variable "add_bootstrap_to_aks_admin" {
   type        = bool
   description = "Optional flag for attaching bootstrap service principal to relevant subscription aks admin group"

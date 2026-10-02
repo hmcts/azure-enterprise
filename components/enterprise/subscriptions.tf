@@ -14,6 +14,7 @@ module "subscription" {
   additional_api_permissions = try(each.value.additional_api_permissions, {})
   additional_readers         = try(each.value.additional_readers, [])
   add_bootstrap_to_aks_admin = try(each.value.add_bootstrap_to_aks_admin, false)
+  additional_aks_admins      = try(each.value.additional_aks_admins, [])
 }
 
 module "custom_role_assignments" {
