@@ -1,7 +1,3 @@
-resource "time_rotating" "rotation_period" {
-  rotation_days = 90
-}
-
 resource "random_uuid" "app_uuid" {}
 
 resource "azuread_application" "app" {
@@ -41,13 +37,6 @@ resource "azuread_application" "app" {
   }
 
   notes = var.notes
-}
-
-resource "azuread_application_password" "token" {
-  application_id = azuread_application.app.id
-  rotate_when_changed = {
-    rotation = time_rotating.rotation_period.id
-  }
 }
 
 resource "azuread_service_principal" "sp" {
