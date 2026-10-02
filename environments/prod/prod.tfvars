@@ -1,7 +1,7 @@
 cft_sandbox_subscriptions = {
   DCD-CFT-Sandbox = {
-    environment = "sbox"
-    deploy_acme = true
+    environment           = "sbox"
+    deploy_acme           = true
     additional_aks_admins = ["e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb"]
   }
   DCD-CFTAPPS-SBOX = {
@@ -69,7 +69,7 @@ cft_production_subscriptions = {
     add_bootstrap_to_aks_admin = true
   }
   DCD-CNP-Prod = {
-    deploy_acme = true
+    deploy_acme           = true
     additional_aks_admins = ["c860eaa0-74be-4731-8370-db94c5fdad81"]
   }
   DTS-CFTPTL-INTSVC = {
@@ -110,7 +110,7 @@ sds_non_production_subscriptions = {
   DTS-SHAREDSERVICES-DEMO = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["ab5aee91-f489-4532-933b-cbf5077b7020"]
+    additional_aks_admins      = ["ab5aee91-f489-4532-933b-cbf5077b7020"]
   }
   DTS-SHAREDSERVICES-DEV = {
     deploy_acme                = true
@@ -129,12 +129,12 @@ sds_non_production_subscriptions = {
   DTS-SHAREDSERVICES-ITHC = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["abd08e6b-a3f9-4e29-aa71-60937b7cc66f"]
+    additional_aks_admins      = ["abd08e6b-a3f9-4e29-aa71-60937b7cc66f"]
   }
   DTS-SHAREDSERVICES-TEST = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["f6a4bf80-9fc3-41de-b81f-558d542452ad"]
+    additional_aks_admins      = ["f6a4bf80-9fc3-41de-b81f-558d542452ad"]
   }
   DTS-ARCHIVING-TEST = {
     environment = "test"
@@ -145,7 +145,7 @@ sds_production_subscriptions = {
   DTS-SHAREDSERVICES-STG = {
     deploy_acme                = true
     add_bootstrap_to_aks_admin = true
-    additional_aks_admins = ["df14f052-7865-49c6-b6f9-13e123dd8b66"]
+    additional_aks_admins      = ["df14f052-7865-49c6-b6f9-13e123dd8b66"]
   }
   DTS-SHAREDSERVICES-PROD = {
     deploy_acme                = true
