@@ -1,9 +1,9 @@
 module "subscription" {
-  for_each = local.subscriptions
+  for_each = local.subscriptions_with_aks_admins
 
   source      = "../../modules/subscription"
   name        = each.key
-  value       = each.value
+  value       = local.subscriptions[each.key]
   common_tags = module.tags[each.key].common_tags
   environment = try(each.value.environment, lower(replace([each.key][0], local.regex_last_section_hyphen, "$1")))
 
@@ -13,10 +13,7 @@ module "subscription" {
   replication_type           = try(each.value.replication_type, "ZRS")
   additional_api_permissions = try(each.value.additional_api_permissions, {})
   additional_readers         = try(each.value.additional_readers, [])
-  additional_aks_admins = concat(
-    try(each.value.additional_aks_admins, []),
-    local.aks_admin_members[each.key],
-  )
+  additional_aks_admins      = try(each.value.additional_aks_admins, [])
   add_bootstrap_to_aks_admin = try(each.value.add_bootstrap_to_aks_admin, false)
 }
 

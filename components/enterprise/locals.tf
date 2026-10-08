@@ -94,6 +94,16 @@ locals {
     )
   }
 
+  subscriptions_with_aks_admins = {
+    for k, subscription in local.subscriptions :
+    k => merge(subscription, {
+      additional_aks_admins = concat(
+        try(subscription.additional_aks_admins, []),
+        local.aks_admin_members[k],
+      )
+    })
+  }
+
   environments = {
     demo = {}
     dev  = {}
