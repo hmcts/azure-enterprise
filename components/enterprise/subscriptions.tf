@@ -13,7 +13,10 @@ module "subscription" {
   replication_type           = try(each.value.replication_type, "ZRS")
   additional_api_permissions = try(each.value.additional_api_permissions, {})
   additional_readers         = try(each.value.additional_readers, [])
-  additional_aks_admins      = local.aks_admin_members[each.key]
+  additional_aks_admins = concat(
+    try(each.value.additional_aks_admins, []),
+    local.aks_admin_members[each.key],
+  )
   add_bootstrap_to_aks_admin = try(each.value.add_bootstrap_to_aks_admin, false)
 }
 
