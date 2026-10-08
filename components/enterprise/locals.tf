@@ -59,51 +59,6 @@ locals {
     local.platform_production,
   )
 
-  production_subscription_groups = toset([
-    "cft_production",
-    "heritage_production",
-    "platform_production",
-    "sds_production",
-    "sps_production",
-  ])
-
-  non_production_subscription_groups = toset([
-    "cft_sandbox",
-    "cft_non_production",
-    "heritage_sandbox",
-    "heritage_non_production",
-    "platform_sandbox",
-    "platform_non_production",
-    "sds_sandbox",
-    "sds_non_production",
-    "sps_sandbox",
-    "sps_non_production",
-  ])
-
-  subscription_environments = {
-    for k, subscription in local.subscriptions :
-    k => try(subscription.environment, lower(replace(k, local.regex_last_section_hyphen, "$1")))
-  }
-
-  aks_admin_members = {
-    for k, subscription in local.subscriptions :
-    k => contains(local.non_production_subscription_groups, subscription.group) ? [var.platform_operations] : (
-      contains(local.production_subscription_groups, subscription.group) || local.subscription_environments[k] == "prod"
-      ? []
-      : [var.platform_operations]
-    )
-  }
-
-  subscriptions_with_aks_admins = {
-    for k, subscription in local.subscriptions :
-    k => merge(subscription, {
-      additional_aks_admins = concat(
-        try(subscription.additional_aks_admins, []),
-        local.aks_admin_members[k],
-      )
-    })
-  }
-
   environments = {
     demo = {}
     dev  = {}

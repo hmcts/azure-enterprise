@@ -23,9 +23,8 @@ variable "env" {
 }
 
 variable "platform_operations" {
-  description = "Object ID of the non-SC Platform Operations group"
+  description = "Object ID of the Platform Operations group"
   type        = string
-  default     = null
 }
 
 variable "pim_approvers" {

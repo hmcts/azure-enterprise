@@ -130,12 +130,7 @@ variable "contributor_role" {
 }
 
 variable "platform_operations" {
-  description = "Object ID of the non-SC Platform Operations group"
-  type        = string
-}
-
-variable "platform_operations_sc" {
-  description = "Object ID of the Platform Operations SC group"
+  description = "Object ID of the Platform Operations group"
   type        = string
 }
 
