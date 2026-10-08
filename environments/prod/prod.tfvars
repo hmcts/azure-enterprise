@@ -366,7 +366,9 @@ add_service_connection_to_ado = true
 contributor_role = "Azure Contributor Role minus deletes"
 
 # Group Object IDs
-#"DTS Platform Operations"
+# DTS Platform Operations (non-SC)
 platform_operations = "e7ea2042-4ced-45dd-8ae3-e051c6551789"
+# Platform Operations SC
+platform_operations_sc = "4d0554dd-fe60-424a-be9c-36636826d927"
 # "DTS Azure PIM Approvers (CNP)"
 pim_approvers = "cfdbb1cc-e789-4d2c-b390-1d9ed77603d3"

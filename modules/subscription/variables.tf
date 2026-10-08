@@ -102,3 +102,9 @@ variable "add_bootstrap_to_aks_admin" {
   description = "Optional flag for attaching bootstrap service principal to relevant subscription aks admin group"
   default     = false
 }
+
+variable "additional_aks_admins" {
+  type        = list(string)
+  description = "Additional principal IDs to add to the subscription AKS administrator group"
+  default     = []
+}
