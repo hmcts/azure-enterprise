@@ -69,8 +69,9 @@ cft_production_subscriptions = {
     deploy_acme = true
   }
   DTS-CFTPTL-INTSVC = {
-    deploy_acme = true
-    environment = "ptl"
+    deploy_acme                = true
+    environment                = "ptl"
+    add_bootstrap_to_aks_admin = true
     additional_readers = [
       "933c1e6e-7915-4ac9-aee2-f0a67ba626ae", # DTS Bootstrap (sub:dcd-cftapps-dev)
       "c822a60c-d948-46f2-a4ce-b1c7ecd33f2f", # DTS Bootstrap (sub:dcd-cftapps-stg)
@@ -83,8 +84,9 @@ cft_production_subscriptions = {
     ]
   }
   DTS-CFTSBOX-INTSVC = {
-    deploy_acme = true
-    environment = "ptlsbox"
+    deploy_acme                = true
+    environment                = "ptlsbox"
+    add_bootstrap_to_aks_admin = true
     additional_readers = [
       "e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb", # jenkins-sbox-mi
     ]
