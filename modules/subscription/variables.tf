@@ -103,8 +103,14 @@ variable "additional_aks_admins" {
   default     = []
 }
 
-variable "add_bootstrap_to_aks_admin" {
+variable "dts_bootstrap_into_aks_admin" {
   type        = bool
-  description = "Optional flag for attaching bootstrap service principal to relevant subscription aks admin group"
+  description = "Optional flag for attaching this subscription's own DTS Bootstrap service principal to its aks admin group"
+  default     = false
+}
+
+variable "dts_operations_into_aks_admin" {
+  type        = bool
+  description = "Optional flag for attaching the DTS Operations (env:X) service principal to this subscription's aks admin group"
   default     = false
 }

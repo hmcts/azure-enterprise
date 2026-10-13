@@ -46,7 +46,13 @@ resource "azuread_group_member" "additional_aks_admins" {
 }
 
 resource "azuread_group_member" "bootstrap_aks_admin" {
-  count            = var.add_bootstrap_to_aks_admin ? 1 : 0
+  count            = var.dts_bootstrap_into_aks_admin ? 1 : 0
   group_object_id  = azuread_group.groups["Azure Kubernetes Service Cluster Admin Role"].object_id
   member_object_id = azuread_service_principal.sp.object_id
+}
+
+resource "azuread_group_member" "dts_operations_aks_admin" {
+  count            = var.dts_operations_into_aks_admin ? 1 : 0
+  group_object_id  = azuread_group.groups["Azure Kubernetes Service Cluster Admin Role"].object_id
+  member_object_id = data.azuread_service_principal.dts_operations[0].object_id
 }

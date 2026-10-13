@@ -11,3 +11,10 @@ data "azuread_group" "aks_global_admin" {
 data "azuread_group" "dts_operations" {
   display_name = "DTS Operations (env:${var.environment})"
 }
+
+# Enterprise application/service principal behind "DTS Operations (env:X)", distinct from the group of the same name above
+# Scoped to only the subscriptions that opt in, so environments without this app (e.g. mgmt, sit) aren't affected
+data "azuread_service_principal" "dts_operations" {
+  count        = var.dts_operations_into_aks_admin ? 1 : 0
+  display_name = "DTS Operations (env:${var.environment})"
+}

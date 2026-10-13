@@ -4,21 +4,21 @@ cft_sandbox_subscriptions = {
     deploy_acme = true
   }
   DCD-CFTAPPS-SBOX = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb"] # jenkins-sbox-mi
+    deploy_acme                  = true
+    dts_bootstrap_into_aks_admin = true
+    additional_aks_admins        = ["e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb"] # jenkins-sbox-mi
   }
   DCD-ROBOTICS-SBOX = {}
 }
 cft_non_production_subscriptions = {
   DCD-CFTAPPS-DEMO = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["75141362-5195-42fb-83f1-69225bb5250b"] # jenkins-demo-mi
+    deploy_acme                  = true
+    dts_bootstrap_into_aks_admin = true
+    additional_aks_admins        = ["75141362-5195-42fb-83f1-69225bb5250b"] # jenkins-demo-mi
   }
   DCD-CFTAPPS-DEV = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
+    deploy_acme                  = true
+    dts_bootstrap_into_aks_admin = true
     additional_readers = [
       "14b22215-46e6-48a9-8681-e8cefe66236a", # jenkins-aat-mi
       "c860eaa0-74be-4731-8370-db94c5fdad81", # jenkins-prod-mi
@@ -26,14 +26,14 @@ cft_non_production_subscriptions = {
     additional_aks_admins = ["a289f989-29fd-46c0-a590-d4bb2be50d39"] # jenkins-preview-mi
   }
   DCD-CFTAPPS-ITHC = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["22349922-a968-43b8-b5a5-1da0e57504c2"] # jenkins-ithc-mi
+    deploy_acme                  = true
+    dts_bootstrap_into_aks_admin = true
+    additional_aks_admins        = ["22349922-a968-43b8-b5a5-1da0e57504c2"] # jenkins-ithc-mi
   }
   DCD-CFTAPPS-TEST = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["531d44e7-5fe6-40cb-a390-ae1f36a23878"] # jenkins-perftest-mi
+    deploy_acme                  = true
+    dts_bootstrap_into_aks_admin = true
+    additional_aks_admins        = ["531d44e7-5fe6-40cb-a390-ae1f36a23878"] # jenkins-perftest-mi
   }
   DCD-CFTAPPSDATA-DEMO = {
     deploy_acme = true
@@ -56,22 +56,22 @@ cft_non_production_subscriptions = {
 }
 cft_production_subscriptions = {
   DCD-CFTAPPS-PROD = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["c860eaa0-74be-4731-8370-db94c5fdad81"] # jenkins-prod-mi
+    deploy_acme                  = true
+    dts_bootstrap_into_aks_admin = true
+    additional_aks_admins        = ["c860eaa0-74be-4731-8370-db94c5fdad81"] # jenkins-prod-mi
   }
   DCD-CFTAPPS-STG = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["14b22215-46e6-48a9-8681-e8cefe66236a"] # jenkins-aat-mi
+    deploy_acme                  = true
+    dts_bootstrap_into_aks_admin = true
+    additional_aks_admins        = ["14b22215-46e6-48a9-8681-e8cefe66236a"] # jenkins-aat-mi
   }
   DCD-CNP-Prod = {
     deploy_acme = true
   }
   DTS-CFTPTL-INTSVC = {
-    deploy_acme                = true
-    environment                = "ptl"
-    add_bootstrap_to_aks_admin = true
+    deploy_acme                  = true
+    environment                  = "ptl"
+    dts_bootstrap_into_aks_admin = true
     additional_readers = [
       "933c1e6e-7915-4ac9-aee2-f0a67ba626ae", # DTS Bootstrap (sub:dcd-cftapps-dev)
       "c822a60c-d948-46f2-a4ce-b1c7ecd33f2f", # DTS Bootstrap (sub:dcd-cftapps-stg)
@@ -84,9 +84,9 @@ cft_production_subscriptions = {
     ]
   }
   DTS-CFTSBOX-INTSVC = {
-    deploy_acme                = true
-    environment                = "ptlsbox"
-    add_bootstrap_to_aks_admin = true
+    deploy_acme                  = true
+    environment                  = "ptlsbox"
+    dts_bootstrap_into_aks_admin = true
     additional_readers = [
       "e97a1e1d-0ae8-48b4-ae3a-49f8cdb44bfb", # jenkins-sbox-mi
     ]
@@ -95,20 +95,20 @@ cft_production_subscriptions = {
 
 sds_sandbox_subscriptions = {
   DTS-SHAREDSERVICES-SBOX = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["c445bc65-3550-421e-af0e-5ab8e8a06a79"] # jenkins-sbox-mi
+    deploy_acme                   = true
+    dts_operations_into_aks_admin = true
+    additional_aks_admins         = ["c445bc65-3550-421e-af0e-5ab8e8a06a79"] # jenkins-sbox-mi
   }
 }
 sds_non_production_subscriptions = {
   DTS-SHAREDSERVICES-DEMO = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["ab5aee91-f489-4532-933b-cbf5077b7020"] # jenkins-demo-mi
+    deploy_acme                   = true
+    dts_operations_into_aks_admin = true
+    additional_aks_admins         = ["ab5aee91-f489-4532-933b-cbf5077b7020"] # jenkins-demo-mi
   }
   DTS-SHAREDSERVICES-DEV = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
+    deploy_acme                   = true
+    dts_operations_into_aks_admin = true
     additional_readers = [
       "df14f052-7865-49c6-b6f9-13e123dd8b66", # jenkins-stg-mi
       "b7167d08-1908-410f-9f0d-ebfb93d248c9", # jenkins-prod-mi
@@ -121,14 +121,14 @@ sds_non_production_subscriptions = {
     additional_aks_admins = ["d4271678-056e-4a35-8388-cbec28e84916"] # jenkins-dev-mi
   }
   DTS-SHAREDSERVICES-ITHC = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["abd08e6b-a3f9-4e29-aa71-60937b7cc66f"] # jenkins-ithc-mi
+    deploy_acme                   = true
+    dts_operations_into_aks_admin = true
+    additional_aks_admins         = ["abd08e6b-a3f9-4e29-aa71-60937b7cc66f"] # jenkins-ithc-mi
   }
   DTS-SHAREDSERVICES-TEST = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["f6a4bf80-9fc3-41de-b81f-558d542452ad"] # jenkins-test-mi
+    deploy_acme                   = true
+    dts_operations_into_aks_admin = true
+    additional_aks_admins         = ["f6a4bf80-9fc3-41de-b81f-558d542452ad"] # jenkins-test-mi
   }
   DTS-ARCHIVING-TEST = {
     environment = "test"
@@ -137,13 +137,13 @@ sds_non_production_subscriptions = {
 }
 sds_production_subscriptions = {
   DTS-SHAREDSERVICES-STG = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    additional_aks_admins      = ["df14f052-7865-49c6-b6f9-13e123dd8b66"] # jenkins-stg-mi
+    deploy_acme                   = true
+    dts_operations_into_aks_admin = true
+    additional_aks_admins         = ["df14f052-7865-49c6-b6f9-13e123dd8b66"] # jenkins-stg-mi
   }
   DTS-SHAREDSERVICES-PROD = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
+    deploy_acme                   = true
+    dts_operations_into_aks_admin = true
     additional_api_permissions = {
       "73c2949e-da2d-457a-9607-fcc665198967" = {
         "817468d0-81dd-4cb5-94ac-07ca133fbbf6" = "Scope"
@@ -159,9 +159,9 @@ sds_production_subscriptions = {
     environment = "prod"
   }
   DTS-SHAREDSERVICESPTL = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    environment                = "ptl"
+    deploy_acme                   = true
+    dts_operations_into_aks_admin = true
+    environment                   = "ptl"
     additional_readers = [
       "df14f052-7865-49c6-b6f9-13e123dd8b66", # jenkins-stg-mi
       "b7167d08-1908-410f-9f0d-ebfb93d248c9", # jenkins-prod-mi
@@ -169,9 +169,9 @@ sds_production_subscriptions = {
     additional_aks_admins = ["7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01"] # jenkins-ptl-mi
   }
   DTS-SHAREDSERVICESPTL-SBOX = {
-    deploy_acme                = true
-    add_bootstrap_to_aks_admin = true
-    environment                = "ptlsbox"
+    deploy_acme                   = true
+    dts_operations_into_aks_admin = true
+    environment                   = "ptlsbox"
     additional_readers = [
       "c445bc65-3550-421e-af0e-5ab8e8a06a79", # jenkins-sbox-mi
     ]
