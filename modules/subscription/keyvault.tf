@@ -84,12 +84,6 @@ resource "azurerm_key_vault_secret" "sp_app_id" {
   key_vault_id = azurerm_key_vault.kv.id
 }
 
-resource "azurerm_key_vault_secret" "sp_token" {
-  name         = "sp-token"
-  value        = azuread_application_password.token.value
-  key_vault_id = azurerm_key_vault.kv.id
-}
-
 resource "azurerm_key_vault_secret" "aks_admin_group_id" {
   name         = "aks-admin-rbac-group-id"
   value        = azuread_group.groups["Azure Kubernetes Service Cluster Admin Role"].object_id
